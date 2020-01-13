@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { Error } from '../pages/Error'
-import { Home } from '../pages/home';
-import { PublicRoute } from './PublicRoute';
+import { Home } from '../pages/Home';
+import { PublicRoute } from './PublicRouter';
 
 export const AppRouter = () => (
   <Router>
