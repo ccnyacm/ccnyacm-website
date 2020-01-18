@@ -32,9 +32,11 @@ class Events extends Component {
         super();
         this.state = {
             /** Note, we may want "dates" instead of date */
+
+            /** NOTE, I DO NOT HAVE LINK WORKING!!!! LINK WORKS FROM CURRENT PAGE NOT GLOBAL?? */
             events: [
-                {id: 1, title: 'Google Visits ACM', host: 'Google', description:'Description', date:'12/12/2019', timeStart:'12pm', timeEnd:'1pm', eventImage:'https://storage.googleapis.com/gd-wagtail-prod-assets/images/evolving_google_identity_2x.max-4000x2000.jpegquality-90.jpg'},
-                {id: 2, title: 'Career Fair', host:'CPDI', description:'Description', date:'12/12/2019', timeStart:'12pm', timeEnd:'2pm', eventImage:'https://storage.googleapis.com/gd-wagtail-prod-assets/images/evolving_google_identity_2x.max-4000x2000.jpegquality-90.jpg'},
+                {id: 1, link:'google.com', title: 'Google Visits ACM', host: 'Google', description:'Description', date:'12/12/2019', timeStart:'12pm', timeEnd:'1pm', eventImage:'https://storage.googleapis.com/gd-wagtail-prod-assets/images/evolving_google_identity_2x.max-4000x2000.jpegquality-90.jpg'},
+                {id: 2, link: 'facebook.com', title: 'Career Fair', host:'CPDI', description:'Description', date:'12/12/2019', timeStart:'12pm', timeEnd:'2pm', eventImage:'https://storage.googleapis.com/gd-wagtail-prod-assets/images/evolving_google_identity_2x.max-4000x2000.jpegquality-90.jpg'},
                 {id: 3, title: 'Career Fair', host:'CPDI', description:'Description', date:'12/12/2019', timeStart:'12pm', timeEnd:'2pm', eventImage:'https://storage.googleapis.com/gd-wagtail-prod-assets/images/evolving_google_identity_2x.max-4000x2000.jpegquality-90.jpg'},
                 {id: 4, title: 'Career Fair', host:'CPDI', description:'Description', date:'12/12/2019', timeStart:'12pm', timeEnd:'2pm', eventImage:'https://storage.googleapis.com/gd-wagtail-prod-assets/images/evolving_google_identity_2x.max-4000x2000.jpegquality-90.jpg'},
                 {id: 5, title: 'Career Fair', host:'CPDI', description:'Description', date:'12/12/2019', timeStart:'12pm', timeEnd:'2pm', eventImage:'https://storage.googleapis.com/gd-wagtail-prod-assets/images/evolving_google_identity_2x.max-4000x2000.jpegquality-90.jpg'},
@@ -64,64 +66,20 @@ class Events extends Component {
     render() {
         return(
             <div>
-                <div> This is the events Page </div>
-                <Grid container spacing={2}>
-                    <Grid item>
-                        <EventList
-                            events={this.state.events}
-                        ></EventList>
-                    </Grid>
-                    <Grid item>
-                        <EventList
-                            /*direction="column"
-                            alignItems="flex-end"*/
-                            events={this.state.events1}
-                        ></EventList>
-                    </Grid>
-                </Grid>
-
-                {/* <Grid container spacing='2'>
-                    <Grid item>
-                        <EventCard
-                            title={this.state.events[0].title}
-                            host={this.state.events[0].host}
-                            eventImage={this.state.events[0].eventImage}
-                            date= {this.state.events[0].date}
-                            timeStart={this.state.events[0].timeStart}
-                            timeEnd={this.state.events[0].timeEnd}
-                        ></EventCard>
-                    </Grid>
-                    <Grid item>
-                        <EventCard
-                            title={this.state.events[0].title}
-                            host={this.state.events[0].host}
-                            eventImage={this.state.events[0].eventImage}
-                            date= {this.state.events[0].date}
-                            timeStart={this.state.events[0].timeStart}
-                            timeEnd={this.state.events[0].timeEnd}
-                        ></EventCard>
-                    </Grid>
-                    <Grid item>
-                        <EventCard
-                            title={this.state.events[0].title}
-                            host={this.state.events[0].host}
-                            eventImage={this.state.events[0].eventImage}
-                            date= {this.state.events[0].date}
-                            timeStart={this.state.events[0].timeStart}
-                            timeEnd={this.state.events[0].timeEnd}
-                        ></EventCard>
-                    </Grid>
-                    <Grid item>
-                        <EventCard
-                            title={this.state.events[0].title}
-                            host={this.state.events[0].host}
-                            eventImage={this.state.events[0].eventImage}
-                            date= {this.state.events[0].date}
-                            timeStart={this.state.events[0].timeStart}
-                            timeEnd={this.state.events[0].timeEnd}
-                        ></EventCard>
-                    </Grid>
-                </Grid>*/}
+                <h1> This is the events Page </h1>
+                <EventList
+                    title="CCNY Events"
+                    events={this.state.events}
+                ></EventList>
+                 
+                {/** Even for the event brite events, we only can limit up to 8, as you can see its a lot. */}
+                <EventList
+                    title="EventBrite Events"
+                    events={this.state.events1}
+                ></EventList>
+                
+                {/** WHen we pull the MLH hackathon stuff, we need to pull based on close state, and then include a link at the bottoms that says 
+                " for more hacakthons see this (Filter set to NY/NJ/PA ??? I think that's reasonable" */}
 
             </div>
         );

@@ -60,11 +60,10 @@ export const EventCard = (props) => {
                 title="Bujar" /** The image should describe the event! */
             />
             <CardContent>
-                <Typography className={classes.typography}>When</Typography>
-                <Typography className={classes.typography}>{props.event.date}</Typography>
-                <Typography className={classes.typography}>Time</Typography>
-                <Typography className={classes.typography}>{props.event.timeStart} to {props.event.timeEnd}</Typography>
-                <Typography className={classes.typography}>{props.event.description}</Typography>
+                <Typography className={classes.typography}>When: {props.event.date}</Typography>
+                <Typography className={classes.typography}>Time: {props.event.timeStart} to {props.event.timeEnd}</Typography>
+                <Typography>{props.event.description}</Typography>
+                <Typography><a href={props.event.link}>{props.event.link}</a></Typography>
             </CardContent>
         </Card>
     </div>
