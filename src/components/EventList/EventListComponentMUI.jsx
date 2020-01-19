@@ -1,5 +1,4 @@
 import React from 'react';
-import {Component} from 'react';
 import {EventCard} from '../Event/EventComponentMUI'
 import Grid from "@material-ui/core/Grid";
 

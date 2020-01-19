@@ -49,58 +49,79 @@ class Events extends Component {
             ],
             hackathons: []
         };
+        //this.getMLHEvents = this.getMLHEvents.bind(this);
     }
 
 
     /** Pull in the events from the database */
     componentDidMount(){
         /** Might want to change the 'year' parmeter so that it auto-updates for future reference */
-        fetch('https://mlh-events.now.sh/na-2020')
-        .then(res => res.json())
-        .then(hackathons => {this.setState({hackathons})
-                console.log(hackathons)  
-            }
-        )
 
-        /** After we get the hackathons, we want to filter them, 
-         * to only show the hackathons past current date 
-         * college level
-         * and potentially in the AREA (Though that does not seemto be given...).  
-         * 
-         * Notice that the event cards that i created call different named properities,
-         * Thus, we also need to rename the kay utalized in each!, and give each an id number. 
-         * */
-        const hackathons = this.state.hackathons; /** Get the list of hackathons -- After it has been set */
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth()+1).padStart(2, '0'); /** Januaray Starts at 0 */
-
-        console.log(hackathons);
-        console.log("Day:" + dd);
-        console.log("Month:" + mm);
-
-        const filteredHackathons = hackathons.filter(  hackathon => {  
-                                            const isHighschool = hackathon.isHighSchool; 
-                                            const date = hackathon.startDate;
-                                            /** NOTE, this isn't a long term solution. 
-                                             * Might be better to find dashes - and then parse month + day from that  */ 
-                                            const day = date.substring(8);
-                                            const month = date.substring(5,7);
-
-                                            /** First check that its a college appropriate hackathon */
-                                            if(isHighschool){
-                                                if(month > mm){
-                                                    return hackathon;
-                                                }else if(month==mm && day >= dd ){
-                                                    /** If its the same month, make sure day is on or past */
-                                                    return hackathon;
-                                                }
-                                            }
-        }   )
-
-        console.log(filteredHackathons); /** Let's see if we actually did something up to this point lol */
+        async function getMLHEvents(){
+            /** First time using async await ==> Declare outer function asyhronous so it works the same */
+            /** First get the response + store it. Declare as await so the rest of the numbers will pause */
+            const res = await fetch('https://mlh-events.now.sh/na-2020');
+            /** Converting to JSON is also an await process */
+            const hackathons = await res.json(); 
+            console.log(hackathons);
 
 
+            //this.setState({hackathons: hackathons});
+            //console.log(this.state.hackathons);
+            /*
+            .then(res => res.json())*/
+            /*
+            .then(hackathons => {this.setState({hackathons})
+                    console.log(hackathons)  
+                }
+            )*/
+
+            /** After we get the hackathons, we want to filter them, 
+             * to only show the hackathons past current date 
+             * college level
+             * and potentially in the AREA (Though that does not seemto be given...).  
+             * 
+             * Notice that the event cards that i created call different named properities,
+             * Thus, we also need to rename the kay utalized in each!, and give each an id number. 
+             * */
+
+
+
+            // hackathons = this.state.hackathons; /** Get the list of hackathons -- After it has been set */
+            //var today = new Date();
+            //var dd = String(today.getDate()).padStart(2, '0');
+            //var mm = String(today.getMonth()+1).padStart(2, '0'); /** Januaray Starts at 0 */
+
+            //console.log(hackathons);
+            //console.log("Day:" + dd);
+            //console.log("Month:" + mm);
+
+           // const filteredHackathons = hackathons.filter(  hackathon => {  
+            //                                    const isHighschool = hackathon.isHighSchool; 
+             //                                   const date = hackathon.startDate;
+             //                                   /** NOTE, this isn't a long term solution. 
+              //                                   * Might be better to find dashes - and then parse month + day from that  */ 
+              //                                  const day = date.substring(8);
+              //                                  const month = date.substring(5,7);
+
+                                                /** First check that its a college appropriate hackathon */
+                //                                if(isHighschool){
+                 //                                   if(month > mm){
+                  //                                      return hackathon;
+                    //                                }else if(month==mm && day >= dd ){
+                                                        /** If its the same month, make sure day is on or past */
+                      //                                  return hackathon;
+                       //                             }
+                        //                        }
+           // }   )
+
+            //console.log(filteredHackathons); /** Let's see if we actually did something up to this point lol */
+
+        }
+
+        (async () => {
+            await getMLHEvents();
+        })();
 
 
     }
