@@ -63,7 +63,7 @@ export const EventCard = (props) => {
                 <Typography className={classes.typography}>When: {props.event.date}</Typography>
                 <Typography className={classes.typography}>Time: {props.event.timeStart} to {props.event.timeEnd}</Typography>
                 <Typography>{props.event.description}</Typography>
-                <Typography><a href={props.event.link}>{props.event.link}</a></Typography>
+                <Typography><a href={props.event.url}>{props.event.url}</a></Typography>
             </CardContent>
         </Card>
     </div>
