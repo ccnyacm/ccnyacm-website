@@ -16,7 +16,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 
 const useStyles = makeStyles({
     card: {
-      minWidth: 275,
+      maxWidth: 275, /** SETTING A MAX WIDTH so that images size and everything wraps! */
       justifyContent: 'center',
       floatLeft: '10%'
     },
@@ -32,12 +32,14 @@ const useStyles = makeStyles({
       marginBottom: 12,
     },
     media: {
+        //maxWidth: 275,
         height: 0,
         paddingTop: '56.25%', // 16:9
       },
     typography:{
-        textAlign: 'center;'
+        textAlign: 'center'
     }
+
   });
 
 
@@ -47,10 +49,10 @@ export const EventCard = (props) => {
 
     return(
     <div>
-        <Card className={classes.card}>
+        <Card className={classes.card} id={props.event.id}>
             <CardHeader
                 title={props.event.title}
-                subheader={"Hosted By " + props.event.host}
+                subheader={/* "Hosted By " +  // Had to remove hosted by, because host will then print undefined if null. ReactDOM is smart  enough to not add attributes if its set to NULL!*/props.event.host}
             />
             <CardMedia
                 className={classes.media}

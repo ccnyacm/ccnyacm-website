@@ -1,7 +1,7 @@
 import React from 'react';
 import {Component} from 'react';
-import {EventCard} from '../components/Event/EventComponentMUI'
-import Grid from "@material-ui/core/Grid";
+/* import {EventCard} from '../components/Event/EventComponentMUI'*/
+/*import Grid from "@material-ui/core/Grid";*/
 import {EventList} from '../components/EventList/EventListComponentMUI'
 /** 
  * We can create components such as Event List, which desing all the events nicely
@@ -19,6 +19,36 @@ import {EventList} from '../components/EventList/EventListComponentMUI'
  *  (And these would be in turnstile/gallery method)
  */
 
+
+
+
+
+function formatDate(date) {
+    /** Numerically indexed */
+    /*var monthNames = [
+      "January", "February", "March",
+      "April", "May", "June", "July",
+      "August", "September", "October",
+      "November", "December"
+    ];*/
+  
+    /** NOTE, this SHOULD be edited to find '-' and then store year/day/month. 
+     * This will ensure more proper written code (OTHERWISE WHAT I HAVE IS HANDWRITTEN!)
+     */
+    const day = date.substring(8);
+    //const month = parseInt(date.substring(5,7)) - 1; /** Januaray = 1 thus need 0! */
+    const month = date.substring(5,7);
+    const year = date.substring(0, 4);
+
+  
+    //return monthNames[month] + ' ' + day +  ' ' + year;
+    return month +  '/' + day +  '/' + year;
+  }
+
+
+
+
+
 class Events extends Component {
     /** Set the data that we need for this page. (NOTE if we transition to single page app,
      * we can move this all to props.) */
@@ -27,25 +57,8 @@ class Events extends Component {
         this.state = {
             /** Note, we may want "dates" instead of date */
 
-            /** NOTE, I DO NOT HAVE LINK WORKING!!!! LINK WORKS FROM CURRENT PAGE NOT GLOBAL?? */
             events: [
-                {id: 1, url:'google.com', title: 'Google Visits ACM', host: 'Google', description:'Description', date:'12/12/2019', timeStart:'12pm', timeEnd:'1pm', eventImage:'https://storage.googleapis.com/gd-wagtail-prod-assets/images/evolving_google_identity_2x.max-4000x2000.jpegquality-90.jpg'},
-                {id: 2, url: 'facebook.com', title: 'Career Fair', host:'CPDI', description:'Description', date:'12/12/2019', timeStart:'12pm', timeEnd:'2pm', eventImage:'https://storage.googleapis.com/gd-wagtail-prod-assets/images/evolving_google_identity_2x.max-4000x2000.jpegquality-90.jpg'},
-                {id: 3, title: 'Career Fair', host:'CPDI', description:'Description', date:'12/12/2019', timeStart:'12pm', timeEnd:'2pm', eventImage:'https://storage.googleapis.com/gd-wagtail-prod-assets/images/evolving_google_identity_2x.max-4000x2000.jpegquality-90.jpg'},
-                {id: 4, title: 'Career Fair', host:'CPDI', description:'Description', date:'12/12/2019', timeStart:'12pm', timeEnd:'2pm', eventImage:'https://storage.googleapis.com/gd-wagtail-prod-assets/images/evolving_google_identity_2x.max-4000x2000.jpegquality-90.jpg'},
-                {id: 5, title: 'Career Fair', host:'CPDI', description:'Description', date:'12/12/2019', timeStart:'12pm', timeEnd:'2pm', eventImage:'https://storage.googleapis.com/gd-wagtail-prod-assets/images/evolving_google_identity_2x.max-4000x2000.jpegquality-90.jpg'},
-                {id: 6, title: 'Career Fair', host:'CPDI', description:'Description', date:'12/12/2019', timeStart:'12pm', timeEnd:'2pm', eventImage:'https://storage.googleapis.com/gd-wagtail-prod-assets/images/evolving_google_identity_2x.max-4000x2000.jpegquality-90.jpg'},
-                {id: 7, title: 'Career Fair', host:'CPDI', description:'Description', date:'12/12/2019', timeStart:'12pm', timeEnd:'2pm', eventImage:'https://storage.googleapis.com/gd-wagtail-prod-assets/images/evolving_google_identity_2x.max-4000x2000.jpegquality-90.jpg'}
-            ],
-            events1: [
-                {id: 1, title: 'Google Visits ACM', host: 'Google', description:'Description', date:'12/12/2019', timeStart:'12pm', timeEnd:'1pm', eventImage:'https://storage.googleapis.com/gd-wagtail-prod-assets/images/evolving_google_identity_2x.max-4000x2000.jpegquality-90.jpg'},
-                {id: 2, title: 'Career Fair', host:'CPDI', description:'Description', date:'12/12/2019', timeStart:'12pm', timeEnd:'2pm', eventImage:'https://storage.googleapis.com/gd-wagtail-prod-assets/images/evolving_google_identity_2x.max-4000x2000.jpegquality-90.jpg'},
-                {id: 3, title: 'Career Fair', host:'CPDI', description:'Description', date:'12/12/2019', timeStart:'12pm', timeEnd:'2pm', eventImage:'https://storage.googleapis.com/gd-wagtail-prod-assets/images/evolving_google_identity_2x.max-4000x2000.jpegquality-90.jpg'},
-                {id: 4, title: 'Career Fair', host:'CPDI', description:'Description', date:'12/12/2019', timeStart:'12pm', timeEnd:'2pm', eventImage:'https://storage.googleapis.com/gd-wagtail-prod-assets/images/evolving_google_identity_2x.max-4000x2000.jpegquality-90.jpg'},
-                {id: 5, title: 'Career Fair', host:'CPDI', description:'Description', date:'12/12/2019', timeStart:'12pm', timeEnd:'2pm', eventImage:'https://storage.googleapis.com/gd-wagtail-prod-assets/images/evolving_google_identity_2x.max-4000x2000.jpegquality-90.jpg'},
-                {id: 6, title: 'Career Fair', host:'CPDI', description:'Description', date:'12/12/2019', timeStart:'12pm', timeEnd:'2pm', eventImage:'https://storage.googleapis.com/gd-wagtail-prod-assets/images/evolving_google_identity_2x.max-4000x2000.jpegquality-90.jpg'},
-                {id: 7, title: 'Career Fair', host:'CPDI', description:'Description', date:'12/12/2019', timeStart:'12pm', timeEnd:'2pm', eventImage:'https://storage.googleapis.com/gd-wagtail-prod-assets/images/evolving_google_identity_2x.max-4000x2000.jpegquality-90.jpg'}
-
+                {id: 'ccny1', url:'', title: 'Mock Technical Interview Session', host: '', description:'Join ACM for our third Mock Interview Session on solving technical problems! This week\'s topics is strings!', date:'1/25/2020', timeStart:'1:00pm', timeEnd:'3:00pm', eventImage:'http://theinterviewpro.com/wp-content/uploads/2016/05/Mock-Interview.png'}
             ],
             hackathons: []
         };
@@ -63,13 +76,13 @@ class Events extends Component {
             const res = await fetch('https://mlh-events.now.sh/na-2020');
             /** Converting to JSON is also an await process */
             const hackathons = await res.json(); 
-            console.log(res);
-            console.log("Okay await async seems to work");
-            console.log(hackathons);
+            //console.log(res);
+            //console.log("Okay await async seems to work");
+            //console.log(hackathons);
             this.setState({hackathons: hackathons}); /** SETTING IT JUST TO SET IT! NOT ACTUALLY GOING TO USE THIS! */
-            console.log("Converted to arrow function to be able to set state \'AutoBinding\' ");
-            console.log(this.state.hackathons);
-            console.log("Wverything seems fine up to here!")
+            //console.log("Converted to arrow function to be able to set state \'AutoBinding\' ");
+            //console.log(this.state.hackathons);
+            //console.log("Wverything seems fine up to here!")
 
 
             /** After we get the hackathons, we want to filter them, 
@@ -80,17 +93,15 @@ class Events extends Component {
              * Thus, we also need to rename the kay utalized in each!, and give each an id number. 
              * */
 
-
-
             //const hackathons = this.state.hackathons; /** Get the list of hackathons -- After it has been set */
             //Reuse the same variable of Hackathons!
             var today = new Date();
             var dd = String(today.getDate()).padStart(2, '0');
             var mm = String(today.getMonth()+1).padStart(2, '0'); /** Januaray Starts at 0 */
 
-            console.log(hackathons);
-            console.log("Day:" + dd);
-            console.log("Month:" + mm);
+            //console.log(hackathons);
+            //console.log("Day:" + dd);
+            //console.log("Month:" + mm);
 
             const filteredHackathons = hackathons.filter(  hackathon => {  
                                                 const isHighschool = hackathon.isHighSchool; 
@@ -104,15 +115,45 @@ class Events extends Component {
                                                 if(!isHighschool){
                                                     if(month > mm){
                                                         return hackathon;
-                                                    }else if(month==mm && day >= dd ){
+                                                    }else if(month===mm && day >= dd ){
                                                         /** If its the same month, make sure day is on or past */
                                                         return hackathon;
                                                     }
                                                 }
             }   )
 
-            console.log(filteredHackathons); /** Let's see if we actually did something up to this point lol */
+            //console.log(filteredHackathons); /** Let's see if we actually did something up to this point lol */
 
+            let id = 1; /** This can't be constant! */
+            /** NEED to find a better way to assign an id to each hackathon 
+             * (As it CANNOT interfer) with other values.
+             * What I am doing, is appending mlh to the front of the value! 
+             * That way id variable can continue to increase. 
+            */
+           // const keyAdjustedHackathons = //Originally used .map however didn't work! Use same array and call forEach! 
+            filteredHackathons.forEach( hackathon => {
+                                                        hackathon['id']= 'mlh'+id;
+                                                        id++; /** Incremeent ID */
+                                                        hackathon['eventImage'] = hackathon.imageUrl; /** Rename */ 
+                                                        hackathon['date'] = hackathon.location; /** NOTE, we have to use the location as the DATE! [Hopefully this parameter doesn't change in the future, otherwise it will produce un-predicted results] */
+                                                        /**NOTE, A Hackathon DOES NOT have START-END TIME. However, I use when and NOT time: therefore we will utalize the dates in place of time */
+                                                        /** FORMAT FUNCTION created outside of class! */
+                                                        hackathon['timeStart'] = formatDate(hackathon.startDate); /** Another Alternative to no time is simply saying "NA? but that's pretty bad..." */
+                                                        hackathon['timeEnd'] = formatDate(hackathon.endDate);
+                                                        hackathon['title'] = hackathon.name;
+
+                                                        /** NOTE, we can either choose to keep the hackathon original keys (Just for reference)
+                                                         * However, I am just deleteing them to "save space" 
+                                                         * NOTE, I haven't really worked much with this to know if it is a tradeoff
+                                                         */
+                                                        delete hackathon.name;
+                                                        delete hackathon.startDate;
+                                                        delete hackathon.endDate;
+                                                        delete hackathon.imageUrl;
+
+         })
+        //console.log(filteredHackathons);
+        this.setState({hackathons: filteredHackathons});
         }
 
         /** We needed a way to call the function to be able to make the API CALL!!! */
