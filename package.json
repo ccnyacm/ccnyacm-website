@@ -17,11 +17,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-<<<<<<< HEAD
-    "predeploy": "yarn run build",
-    "deploy": "gh-pages -b master -d build",
-=======
->>>>>>> parent of 86c4fb8... Main page = events + linked to github pages
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
