@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/ccnyacm-website/static/js/main.cd90ef99.chunk.js",
+    "main.js.map": "/ccnyacm-website/static/js/main.cd90ef99.chunk.js.map",
+    "runtime-main.js": "/ccnyacm-website/static/js/runtime-main.f52a1afa.js",
+    "runtime-main.js.map": "/ccnyacm-website/static/js/runtime-main.f52a1afa.js.map",
+    "static/js/2.cfa1850d.chunk.js": "/ccnyacm-website/static/js/2.cfa1850d.chunk.js",
+    "static/js/2.cfa1850d.chunk.js.map": "/ccnyacm-website/static/js/2.cfa1850d.chunk.js.map",
+    "index.html": "/ccnyacm-website/index.html",
+    "precache-manifest.d8904e14150c4239da83ed74f2e2bc91.js": "/ccnyacm-website/precache-manifest.d8904e14150c4239da83ed74f2e2bc91.js",
+    "service-worker.js": "/ccnyacm-website/service-worker.js",
+    "static/js/2.cfa1850d.chunk.js.LICENSE": "/ccnyacm-website/static/js/2.cfa1850d.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f52a1afa.js",
+    "static/js/2.cfa1850d.chunk.js",
+    "static/js/main.cd90ef99.chunk.js"
+  ]
+}
