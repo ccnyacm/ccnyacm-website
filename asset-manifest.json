@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/ccnyacm-website/static/js/main.cd90ef99.chunk.js",
-    "main.js.map": "/ccnyacm-website/static/js/main.cd90ef99.chunk.js.map",
+    "main.js": "/ccnyacm-website/static/js/main.deff17df.chunk.js",
+    "main.js.map": "/ccnyacm-website/static/js/main.deff17df.chunk.js.map",
     "runtime-main.js": "/ccnyacm-website/static/js/runtime-main.f52a1afa.js",
     "runtime-main.js.map": "/ccnyacm-website/static/js/runtime-main.f52a1afa.js.map",
-    "static/js/2.cfa1850d.chunk.js": "/ccnyacm-website/static/js/2.cfa1850d.chunk.js",
-    "static/js/2.cfa1850d.chunk.js.map": "/ccnyacm-website/static/js/2.cfa1850d.chunk.js.map",
+    "static/js/2.7747819e.chunk.js": "/ccnyacm-website/static/js/2.7747819e.chunk.js",
+    "static/js/2.7747819e.chunk.js.map": "/ccnyacm-website/static/js/2.7747819e.chunk.js.map",
     "index.html": "/ccnyacm-website/index.html",
-    "precache-manifest.d8904e14150c4239da83ed74f2e2bc91.js": "/ccnyacm-website/precache-manifest.d8904e14150c4239da83ed74f2e2bc91.js",
+    "precache-manifest.7d3554013d9ce87ec644465285cf6e24.js": "/ccnyacm-website/precache-manifest.7d3554013d9ce87ec644465285cf6e24.js",
     "service-worker.js": "/ccnyacm-website/service-worker.js",
-    "static/js/2.cfa1850d.chunk.js.LICENSE": "/ccnyacm-website/static/js/2.cfa1850d.chunk.js.LICENSE"
+    "static/js/2.7747819e.chunk.js.LICENSE": "/ccnyacm-website/static/js/2.7747819e.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.f52a1afa.js",
-    "static/js/2.cfa1850d.chunk.js",
-    "static/js/main.cd90ef99.chunk.js"
+    "static/js/2.7747819e.chunk.js",
+    "static/js/main.deff17df.chunk.js"
   ]
 }
