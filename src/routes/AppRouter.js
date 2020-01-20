@@ -1,5 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+//import { BrowserRouter as Router, Switch } from 'react-router-dom';
+//HashRouter
+import { HashRouter as Router, Switch } from 'react-router-dom';
 import { Error } from '../pages/Error'
 import { Home } from '../pages/Home';
 import Events from '../pages/Events';
