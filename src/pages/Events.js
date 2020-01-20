@@ -55,31 +55,26 @@ class Events extends Component {
 
     /** Pull in the events from the database */
     componentDidMount(){
-        /** Might want to change the 'year' parmeter so that it auto-updates for future reference */
 
-        async function getMLHEvents(){
-            /** First time using async await ==> Declare outer function asyhronous so it works the same */
+        /** First time using async await ==> Declare outer function asyhronous so it works the same */
+        const getMLHEvents = async () => {
+            
             /** First get the response + store it. Declare as await so the rest of the numbers will pause */
             const res = await fetch('https://mlh-events.now.sh/na-2020');
             /** Converting to JSON is also an await process */
             const hackathons = await res.json(); 
+            console.log(res);
+            console.log("Okay await async seems to work");
             console.log(hackathons);
+            this.setState({hackathons: hackathons}); /** SETTING IT JUST TO SET IT! NOT ACTUALLY GOING TO USE THIS! */
+            console.log("Converted to arrow function to be able to set state \'AutoBinding\' ");
+            console.log(this.state.hackathons);
+            console.log("Wverything seems fine up to here!")
 
-
-            //this.setState({hackathons: hackathons});
-            //console.log(this.state.hackathons);
-            /*
-            .then(res => res.json())*/
-            /*
-            .then(hackathons => {this.setState({hackathons})
-                    console.log(hackathons)  
-                }
-            )*/
 
             /** After we get the hackathons, we want to filter them, 
-             * to only show the hackathons past current date 
-             * college level
-             * and potentially in the AREA (Though that does not seemto be given...).  
+             * to only show the hackathons past current date and college level
+             * Location does not actually show AREA (Would have been nice to filter for NY,NJ,PA) 
              * 
              * Notice that the event cards that i created call different named properities,
              * Thus, we also need to rename the kay utalized in each!, and give each an id number. 
@@ -87,38 +82,40 @@ class Events extends Component {
 
 
 
-            // hackathons = this.state.hackathons; /** Get the list of hackathons -- After it has been set */
-            //var today = new Date();
-            //var dd = String(today.getDate()).padStart(2, '0');
-            //var mm = String(today.getMonth()+1).padStart(2, '0'); /** Januaray Starts at 0 */
+            //const hackathons = this.state.hackathons; /** Get the list of hackathons -- After it has been set */
+            //Reuse the same variable of Hackathons!
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth()+1).padStart(2, '0'); /** Januaray Starts at 0 */
 
-            //console.log(hackathons);
-            //console.log("Day:" + dd);
-            //console.log("Month:" + mm);
+            console.log(hackathons);
+            console.log("Day:" + dd);
+            console.log("Month:" + mm);
 
-           // const filteredHackathons = hackathons.filter(  hackathon => {  
-            //                                    const isHighschool = hackathon.isHighSchool; 
-             //                                   const date = hackathon.startDate;
-             //                                   /** NOTE, this isn't a long term solution. 
-              //                                   * Might be better to find dashes - and then parse month + day from that  */ 
-              //                                  const day = date.substring(8);
-              //                                  const month = date.substring(5,7);
+            const filteredHackathons = hackathons.filter(  hackathon => {  
+                                                const isHighschool = hackathon.isHighSchool; 
+                                                const date = hackathon.startDate;
+                                                /** NOTE, this isn't a long term solution. 
+                                                 * Might be better to find dashes - and then parse month + day from that  */ 
+                                                const day = date.substring(8);
+                                                const month = date.substring(5,7);
 
                                                 /** First check that its a college appropriate hackathon */
-                //                                if(isHighschool){
-                 //                                   if(month > mm){
-                  //                                      return hackathon;
-                    //                                }else if(month==mm && day >= dd ){
+                                                if(!isHighschool){
+                                                    if(month > mm){
+                                                        return hackathon;
+                                                    }else if(month==mm && day >= dd ){
                                                         /** If its the same month, make sure day is on or past */
-                      //                                  return hackathon;
-                       //                             }
-                        //                        }
-           // }   )
+                                                        return hackathon;
+                                                    }
+                                                }
+            }   )
 
-            //console.log(filteredHackathons); /** Let's see if we actually did something up to this point lol */
+            console.log(filteredHackathons); /** Let's see if we actually did something up to this point lol */
 
         }
 
+        /** We needed a way to call the function to be able to make the API CALL!!! */
         (async () => {
             await getMLHEvents();
         })();
@@ -138,8 +135,8 @@ class Events extends Component {
                 
                 {/** Even for the event brite events, we only can limit up to 8, as you can see its a lot. */}
                 <EventList
-                    title="EventBrite Events"
-                    events={this.state.events1}
+                    title="Hackathon Events"
+                    events={this.state.hackathons.slice(0,8) /** NOTE, WE WANT ONLY 8 ELEMENTS! Otherwise we will be overloaded with events! */}
                 ></EventList>
                 
                 {/** WHen we pull the MLH hackathon stuff, we need to pull based on close state, and then include a link at the bottoms that says 
