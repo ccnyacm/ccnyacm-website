@@ -1,4 +1,3 @@
-import request from 'axios';
 import { string, any } from 'prop-types';
 
 // this is the structure of requestInfo
