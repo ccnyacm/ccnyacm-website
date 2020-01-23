@@ -132,24 +132,24 @@ class Events extends Component {
             */
            // const keyAdjustedHackathons = //Originally used .map however didn't work! Use same array and call forEach! 
             filteredHackathons.forEach( hackathon => {
-                                                        hackathon['id']= 'mlh'+id;
-                                                        id++; /** Incremeent ID */
-                                                        hackathon['eventImage'] = hackathon.imageUrl; /** Rename */ 
-                                                        hackathon['date'] = hackathon.location; /** NOTE, we have to use the location as the DATE! [Hopefully this parameter doesn't change in the future, otherwise it will produce un-predicted results] */
-                                                        /**NOTE, A Hackathon DOES NOT have START-END TIME. However, I use when and NOT time: therefore we will utalize the dates in place of time */
-                                                        /** FORMAT FUNCTION created outside of class! */
-                                                        hackathon['timeStart'] = formatDate(hackathon.startDate); /** Another Alternative to no time is simply saying "NA? but that's pretty bad..." */
-                                                        hackathon['timeEnd'] = formatDate(hackathon.endDate);
-                                                        hackathon['title'] = hackathon.name;
+                hackathon['id']= 'mlh'+id;
+                id++; /** Incremeent ID */
+                hackathon['eventImage'] = hackathon.imageUrl; /** Rename */ 
+                hackathon['date'] = hackathon.location; /** NOTE, we have to use the location as the DATE! [Hopefully this parameter doesn't change in the future, otherwise it will produce un-predicted results] */
+                /**NOTE, A Hackathon DOES NOT have START-END TIME. However, I use when and NOT time: therefore we will utalize the dates in place of time */
+                /** FORMAT FUNCTION created outside of class! */
+                hackathon['timeStart'] = formatDate(hackathon.startDate); /** Another Alternative to no time is simply saying "NA? but that's pretty bad..." */
+                hackathon['timeEnd'] = formatDate(hackathon.endDate);
+                hackathon['title'] = hackathon.name;
 
-                                                        /** NOTE, we can either choose to keep the hackathon original keys (Just for reference)
-                                                         * However, I am just deleteing them to "save space" 
-                                                         * NOTE, I haven't really worked much with this to know if it is a tradeoff
-                                                         */
-                                                        delete hackathon.name;
-                                                        delete hackathon.startDate;
-                                                        delete hackathon.endDate;
-                                                        delete hackathon.imageUrl;
+                /** NOTE, we can either choose to keep the hackathon original keys (Just for reference)
+                 * However, I am just deleteing them to "save space" 
+                 * NOTE, I haven't really worked much with this to know if it is a tradeoff
+                 */
+                delete hackathon.name;
+                delete hackathon.startDate;
+                delete hackathon.endDate;
+                delete hackathon.imageUrl;
 
          })
         //console.log(filteredHackathons);
