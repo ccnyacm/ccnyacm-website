@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles({
     card: {
-        maxWidth: 275, /** SETTING A MAX WIDTH so that images size and everything wraps! */
+        maxWidth: 290, /** SETTING A MAX WIDTH so that images size and everything wraps! */
         justifyContent: 'center',
         floatLeft: '10%'
     },
