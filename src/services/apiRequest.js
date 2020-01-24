@@ -24,7 +24,7 @@ export async function apiRequest(route, method, body) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body,
+      body: JSON.stringify(body),
     });
     return response;
   } catch (error) {
