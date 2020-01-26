@@ -21,18 +21,22 @@ export async function getMLHEvents() {
 
 export async function getFirstMLHEvents(num) {
     try {
+        //get the hackathons data from api
         const response = await fetch('https://mlh-events.now.sh/na-2020');
         const hackathons = await response.json();
+        //get current time to onily get data happening beyond this date.
         const now = new Date();
-        const filteredHackathons = hackathons.filter((hackathon, index) => {
-            const { isHishSchool, startDate } = hackathon;
+        let counter = 0;
+        // filter hackathons and count them to make sure we only return num of them
+        const filteredHackathons = [];
+        for (let i = 0; i < hackathons.length && counter <= num; i++) {
+            const { isHishSchool, startDate } = hackathons[i];
             const date = new Date(startDate);
-            return (
-                !isHishSchool
-                && date >= now
-                && index <= num
-            );
-        });
+            if (!isHishSchool && date >= now) {
+                filteredHackathons.push(hackathons[i]);
+                ++counter;
+            }
+        }
         return filteredHackathons;
     } catch (error) {
         throw error;

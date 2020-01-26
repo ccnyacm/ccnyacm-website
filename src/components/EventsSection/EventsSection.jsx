@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { EventList } from '../EventList';
 import { apiRequest, getFirstMLHEvents } from '../../services'
-import { ErrorDialog } from '../ErrorDialog/ErrorDialog';
-import { number} from 'prop-types';
+import { ErrorDialog } from '../ErrorDialog';
+import { number, bool } from 'prop-types';
 /** 
  * We can create components such as Event List, which desing all the events nicely
  * We can create an event/card component, which has the details of each event (And call/generate them via Event List )
@@ -19,10 +19,11 @@ import { number} from 'prop-types';
  *  (And these would be in turnstile/gallery method)
  */
 
-export const EventsSection = ({ localNum, outsideNum }) => {
+export const EventsSection = ({ localNum, outsideNum, hasMore }) => {
   const [events, setEvents] = useState([]);
   const [hackathons, setHackathons] = useState([])
   const [error, setError] = useState('');
+  const [hasError, setHasError] = useState(false)
 
   const getEvents = async () => {
     try {
@@ -32,9 +33,11 @@ export const EventsSection = ({ localNum, outsideNum }) => {
         setEvents(data);
       } else {
         setError(data.message);
+        setHasError(true)
       }
     } catch (err) {
       setError(err.message);
+      setHasError(true)
     }
   };
 
@@ -60,13 +63,12 @@ export const EventsSection = ({ localNum, outsideNum }) => {
   });
   return (
     <>
-    {
-      error !== ''
-      && <ErrorDialog title="Error" message={error} open={error !== ''} onClose={() => setError('')} />
-    }
+    <ErrorDialog title="Error" message={error} open={hasError} onClose={() => setHasError(false)} />
       <EventList
         title="CCNY Events"
         events={events}
+        hasMore={hasMore}
+        linkRef="/events"
       ></EventList>
 
       {/** Even for the event brite events, we only can limit up to 8, as you can see its a lot. */}
@@ -74,6 +76,8 @@ export const EventsSection = ({ localNum, outsideNum }) => {
         title="Hackathon Events"
         events={hackathons}
         mlhEvents={true}
+        hasMore={hasMore}
+        linkRef="/events"
       ></EventList>
 
       {/** WHen we pull the MLH hackathon stuff, we need to pull based on close state, and then include a link at the bottoms that says 
@@ -86,4 +90,5 @@ export const EventsSection = ({ localNum, outsideNum }) => {
 EventsSection.propTypes = {
   localNum: number.isRequired,
   outsideNum: number.isRequired,
+  hasMore: bool,
 };

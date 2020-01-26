@@ -54,7 +54,6 @@ export const EventCard = ({ event, className, onClick, mlh}) => {
   }
 
   return(
-  <div>
       <Card className={`${classes.card} ${className}`}>
           <CardHeader
               title={event.title}
@@ -86,7 +85,6 @@ export const EventCard = ({ event, className, onClick, mlh}) => {
             </Button>
           </CardActions>
       </Card>
-  </div>
   );
 
 }
