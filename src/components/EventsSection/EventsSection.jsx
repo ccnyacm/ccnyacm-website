@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { EventList } from '../EventList';
-import { apiRequest, getFirstMLHEvents } from '../../services'
+import { getFirstEvents, getFirstMLHEvents } from '../../services'
 import { ErrorDialog } from '../ErrorDialog';
 import { number, bool } from 'prop-types';
 /** 
@@ -27,14 +27,8 @@ export const EventsSection = ({ localNum, outsideNum, hasMore }) => {
 
   const getEvents = async () => {
     try {
-      const response = await apiRequest('/events', 'POST', {num: localNum});
-      const data = await response.json();
-      if (response.status === 200) {
-        setEvents(data);
-      } else {
-        setError(data.message);
-        setHasError(true)
-      }
+      const data = await getFirstEvents(localNum);
+      setEvents(data);
     } catch (err) {
       setError(err.message);
       setHasError(true)

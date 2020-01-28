@@ -21,3 +21,6 @@ yarn-error.log*
 
 #hosting
 .firebase
+
+#private keys
+serviceAccount.js

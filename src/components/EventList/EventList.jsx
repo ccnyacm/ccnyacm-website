@@ -4,11 +4,28 @@ import {
   Grid,
   Card,
   CardContent,
+  CardActionArea,
 } from "@material-ui/core";
 import { Link } from 'react-router-dom';
 import { string, bool, array } from 'prop-types';
 
 export const EventList = ({ events, title, mlhEvents, hasMore, linkRef }) => {
+  const displayMoreButton = () => {
+    if (hasMore) {
+      return (
+        <Card>
+          <CardActionArea style={{height: '100%'}} onClick={() => window.location = linkRef}>
+            <CardContent>
+              <Link to={linkRef}>
+                ...More
+            </Link>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      );
+    }
+    return <span/>
+  }
   return(
     <div>
       <h2>{title}</h2>
@@ -20,9 +37,7 @@ export const EventList = ({ events, title, mlhEvents, hasMore, linkRef }) => {
               <EventCard key={event.id || `event${index}`} event={event} mlh={mlhEvents} /> 
           </Grid>))
       }
-      {
-          hasMore && <Card><CardContent><Link to={linkRef}>...More</Link></CardContent></Card>
-      }
+      {displayMoreButton()}
       </Grid>
     </div>
   );

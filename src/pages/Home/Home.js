@@ -11,7 +11,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import useStyles from './style';
-import { apiRequest } from '../../services';
+import { getInfo } from '../../services';
 import { ErrorDialog } from '../../components/ErrorDialog/ErrorDialog';
 
 export const Home = () => {
@@ -30,16 +30,10 @@ export const Home = () => {
       description: "Hello World!",
     }
   ]
-  const getABoutInfo = async () => {
+  const getAboutInfo = async () => {
     try {
-      const response = await apiRequest('/info/about', 'GET', null);
-        const data = await response.json();
-        if (response.status === 200) {
-          setAbout(data);
-        } else {
-          setError(data.message);
-          setHasError(true);
-        }
+      const aboutData = await getInfo('about');
+      setAbout(aboutData);
     } catch(err) {
       setError(err.message);
       setHasError(true);
@@ -48,20 +42,14 @@ export const Home = () => {
 
   useEffect(() => {
     if (about === '') {
-      getABoutInfo();
+      getAboutInfo();
     }
   });
 
   const getWhatWeDoInfo = async () => {
     try {
-      const response = await apiRequest('/info/thingswedo', 'GET', null);
-      const data = await response.json();
-      if (response.status === 200) {
-        setThingsWeDo(data);
-      } else {
-        setError(data.message);
-        setHasError(true);
-      }
+      const data = await getInfo('things');
+      setThingsWeDo(data);
     } catch (err) {
       setError(err.message);
       setHasError(true);

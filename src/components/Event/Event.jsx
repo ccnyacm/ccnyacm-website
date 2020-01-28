@@ -10,6 +10,7 @@ import {
   Typography,
   CardHeader,
   CardMedia,
+  CardActionArea,
   Button,
   CardActions,
 } from '@material-ui/core'
@@ -55,27 +56,29 @@ export const EventCard = ({ event, className, onClick, mlh}) => {
 
   return(
       <Card className={`${classes.card} ${className}`}>
+        <CardActionArea onClick={handleOnClick}> 
           <CardHeader
-              title={event.title}
-              subheader={/* "Hosted By " +  // Had to remove hosted by, because host will then print undefined if null. ReactDOM is smart  enough to not add attributes if its set to NULL!*/event.host}
+            title={event.title}
+            subheader={/* "Hosted By " +  // Had to remove hosted by, because host will then print undefined if null. ReactDOM is smart  enough to not add attributes if its set to NULL!*/event.host}
           />
           <CardMedia
-              className={classes.media}
-              image={event.imageUrl}
-              title="Bujar" /** The image should describe the event! */
+            className={classes.media}
+            image={event.imageUrl}
+            title="Bujar" /** The image should describe the event! */
           />
           <CardContent>
-              <Typography className={classes.typography}>
-                {dateRange}
-                </Typography>
-                {
-                  // display only if the event is not from mlh
-                  !mlh 
-                  && <Typography className={classes.typography}>
-                    {timeRange}
-                  </Typography>
-                }
+            <Typography className={classes.typography}>
+              {dateRange}
+            </Typography>
+            {
+              // display only if the event is not from mlh
+              !mlh
+              && <Typography className={classes.typography}>
+                {timeRange}
+              </Typography>
+            }
           </CardContent>
+        </CardActionArea>
           <CardActions>
             <Button
               color="primary"

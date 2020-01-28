@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Section } from '../Section';
 import { BoardMemberCardList } from '../BoardMemberCardList';
-import { apiRequest } from '../../services';
+import { getAllMembers } from '../../services';
 import { ErrorDialog } from '../ErrorDialog';
 
 export const BoardMembers = () => {
@@ -11,14 +11,8 @@ export const BoardMembers = () => {
   
   const getMembers = async () => {
     try {
-      const response = await apiRequest('/members/all', 'GET', null);
-      const data = await response.json();
-      if (response.status === 200) {
-        setMembers(data);
-      } else {
-        setError(data.message);
-        setHasError(true);
-      }
+      const data = await getAllMembers();
+      setMembers(data);
     } catch (err) {
       setError(err.message);
       setHasError(true);
