@@ -1,16 +1,14 @@
 import React, { useReducer } from 'react';
 import appReducer from './appReducer';
 import AppContext from './appContext';
-import { IS_ERROR_CHANGE, ERROR_CHANGE } from './types';
+import { IS_ERROR_CHANGE, ERROR_CHANGE, SELECTED_EVENT_CHANGE, SELECTED_MEMBER_CHANGE } from './types';
 
 export const AppState = ({ children }) => {
   const INITIAL_STATE = {
     error: '',
     hasError: false,
-    events: [],
-    members: [],
-    about: '',
-    thingsWeDo: '',
+    selectedEvents: {},
+    selectedMEmber: {},
   };
 
   const [state, dispatch] = useReducer(appReducer, INITIAL_STATE);
@@ -22,6 +20,14 @@ export const AppState = ({ children }) => {
   const setError = (value) => {
     dispatch({ type: ERROR_CHANGE, payload: value })
   };
+
+  const setSelectedEvent = (event) => {
+    dispatch({ type: SELECTED_EVENT_CHANGE, payload: event });
+  };
+
+  const setSelectedMember = (member) => {
+    dispatch({ type: SELECTED_MEMBER_CHANGE, payload: member });
+  };
   
   return (
     <AppContext.Provider
@@ -29,6 +35,8 @@ export const AppState = ({ children }) => {
         ...state,
         setHasError,
         setError,
+        setSelectedEvent,
+        setSelectedMember,
       }}
     >
       {children}
