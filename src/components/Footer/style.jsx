@@ -15,11 +15,15 @@ export const useStyles = makeStyles((theme) => ({
   },
   icon: {
     color: '#55A5FA',
-    marginLeft: '5%',
-    marginRight: '5%',
+    width: 40,
+    height: 40,
   },
   link: {
     color: '#55A5FA',
     textDecoration: 'none',
+  },
+  row: {
+    display: 'flex',
+    justifyContent: 'center'
   },
 }));

@@ -1,10 +1,12 @@
 import React from 'react';
 import {
-  Container,
   Typography,
-  Box,
   Link,
-  CssBaseline
+  CssBaseline,
+  TableContainer,
+  TableBody,
+  TableRow,
+  TableCell,
 } from '@material-ui/core';
 import {
   Facebook as FacebookIcon,
@@ -17,18 +19,26 @@ export const Footer = () => {
   return (
     <>
       <CssBaseline />
-      <Container className={classes.container}>
-        <Typography className={classes.text}>
-          Website developed by <a className={classes.link}  href="https://www.linkedin.com/in/engerthen/">Enger Then</a> and onwed by CCNY ACM.
-          <br/>
-          <FacebookIcon
-            className={classes.icon}
-          />
-          <KeyboardIcon
-            className={classes.icon}
-          />
-        </Typography>
-      </Container>
+      <TableContainer className={classes.container}>
+        <TableBody>
+          <TableRow>
+            <Typography className={classes.text}>
+             Copyright © 2020 CCNY ACM | Website developed by <a className={classes.link} href="https://www.linkedin.com/in/engerthen/">Enger Then</a>
+            </Typography>
+          </TableRow>
+          <TableRow className={classes.row}>
+            <Link href="https://www.facebook.com/groups/ccnyacm/">
+              <FacebookIcon className={classes.icon} />
+            </Link>
+            <Link href="https://www.flickr.com/photos/ccnyacm">
+              <img src={process.env.PUBLIC_URL + '/icons/flickr.png'} alt="flickr" className={classes.icon} />
+            </Link>
+            <Link href="http://slides.com/ccnyacm">
+              <KeyboardIcon className={classes.icon} />
+            </Link>
+          </TableRow>
+        </TableBody>
+      </TableContainer>
     </>
   );
 };
