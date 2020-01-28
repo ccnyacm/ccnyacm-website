@@ -6,7 +6,7 @@ import { IS_ERROR_CHANGE, ERROR_CHANGE } from './types';
 export const AppState = ({ children }) => {
   const INITIAL_STATE = {
     error: '',
-    isError: false,
+    hasError: false,
     events: [],
     members: [],
     about: '',
@@ -15,7 +15,7 @@ export const AppState = ({ children }) => {
 
   const [state, dispatch] = useReducer(appReducer, INITIAL_STATE);
 
-  const setIsError = (value) => {
+  const setHasError = (value) => {
     dispatch({ type: IS_ERROR_CHANGE, payload: value });
   };
 
@@ -27,7 +27,7 @@ export const AppState = ({ children }) => {
     <AppContext.Provider
       value={{
         ...state,
-        setIsError,
+        setHasError,
         setError,
       }}
     >

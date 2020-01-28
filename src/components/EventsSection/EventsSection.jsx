@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { EventList } from '../EventList';
 import { getFirstEvents, getFirstMLHEvents } from '../../services'
-import { ErrorDialog } from '../ErrorDialog';
 import { number, bool } from 'prop-types';
+import appContext from '../../context/appContext';
 /** 
  * We can create components such as Event List, which desing all the events nicely
  * We can create an event/card component, which has the details of each event (And call/generate them via Event List )
@@ -22,8 +22,7 @@ import { number, bool } from 'prop-types';
 export const EventsSection = ({ localNum, outsideNum, hasMore }) => {
   const [events, setEvents] = useState([]);
   const [hackathons, setHackathons] = useState([])
-  const [error, setError] = useState('');
-  const [hasError, setHasError] = useState(false)
+  const { setError, setHasError } = useContext(appContext);
 
   const getEvents = async () => {
     try {
@@ -57,7 +56,6 @@ export const EventsSection = ({ localNum, outsideNum, hasMore }) => {
   });
   return (
     <>
-    <ErrorDialog title="Error" message={error} open={hasError} onClose={() => setHasError(false)} />
       <EventList
         title="CCNY Events"
         events={events}

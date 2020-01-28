@@ -6,6 +6,7 @@ import { KeyboardArrowUp } from '@material-ui/icons'
 import { ScrollToTop } from '../components/ScrollToTop';
 import { NavBar } from '../components/NavBar';
 import { Footer } from '../components/Footer';
+import { ErrorDialog } from '../components/ErrorDialog';
 
 export const PublicRoute = ({
   component: Component,
@@ -17,6 +18,7 @@ export const PublicRoute = ({
       <Box style={{ backgroundColor: '#fff' }}>
         <NavBar />
         <Toolbar />
+        <ErrorDialog />
         <Component {...props} />
         <ScrollToTop scrollStep={100} delayInMS={16.6}>
           <Fab color="inherit" size="small" aria-label="scroll back to top">

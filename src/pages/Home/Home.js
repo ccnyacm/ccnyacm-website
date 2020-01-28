@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Carousel from 'react-material-ui-carousel';
 import {
   CarouselItem,
@@ -12,13 +12,12 @@ import {
 } from '@material-ui/core';
 import useStyles from './style';
 import { getInfo } from '../../services';
-import { ErrorDialog } from '../../components/ErrorDialog/ErrorDialog';
+import appContext from '../../context/appContext';
 
 export const Home = () => {
   const [about, setAbout] = useState('');
   const [thingsWeDo, setThingsWeDo] = useState('');
-  const [error, setError] = useState('');
-  const [hasError, setHasError] = useState(false);
+  const { setError, setHasError } = useContext(appContext);
   const classes = useStyles();
   const items = [
     {
@@ -64,7 +63,6 @@ export const Home = () => {
 
   return (
     <Container className={classes.root}>
-      <ErrorDialog title="Error" message={error} open={hasError} onClose={() => setHasError(false)} />
       <Carousel autoPlay animation="slide">
         {items.map((item) => (
           <CarouselItem item={item} />

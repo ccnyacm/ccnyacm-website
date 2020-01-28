@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
     Dialog,
     DialogTitle,
@@ -7,29 +7,25 @@ import {
     Typography,
     Button,
 } from '@material-ui/core';
-import {string, func, bool } from 'prop-types';
+import appContext from '../../context/appContext';
 
-export const ErrorDialog = ({ title, message, onClose, open }) => (
-    <Dialog open={open} onClose={() => onClose()}>
-        <DialogTitle>
-            {title}
-        </DialogTitle>
-        <DialogContent>
-            <Typography variant="p">
-                {message}
-            </Typography>
-        </DialogContent>
-        <DialogActions>
-            <Button onClick={() => onClose()}>
-                ok
-            </Button>
-        </DialogActions>
+export const ErrorDialog = () => {
+  const { error, hasError, setHasError } = useContext(appContext);
+  return (
+    <Dialog open={hasError} onClose={() => setHasError(false)}>
+      <DialogTitle>
+        Error
+      </DialogTitle>
+      <DialogContent>
+        <Typography variant="p">
+          {error}
+        </Typography>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={() => setHasError(false)}>
+          ok
+        </Button>
+      </DialogActions>
     </Dialog>
-);
-
-ErrorDialog.propTypes = {
-    title: string.isRequired,
-    message: string.isRequired,
-    open: bool.isRequired,
-    onClose: func
+  );
 }
