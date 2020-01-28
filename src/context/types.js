@@ -1,0 +1,2 @@
+export const IS_ERROR_CHANGE = 'IS_ERROR_CHANGE';
+export const ERROR_CHANGE = 'ERROR_CHANGE';
