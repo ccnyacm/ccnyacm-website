@@ -14,6 +14,7 @@ import {
   Button,
   CardActions,
 } from '@material-ui/core'
+import { MoreHoriz as MoreHorizIcon } from '@material-ui/icons';
 import { useStyles } from './style';
 
 /** NOTE, this page creates the Card, by calling Material UI, and passing props through parent Event */
@@ -36,8 +37,8 @@ export const EventCard = ({ event, className, onClick, mlh}) => {
       ...event,
       // dates come as a Firestore.TimeStamp object which has the form {_seconds: 0, _nanoseconds: 0}
       // where seconds in the number of seconds since 9/1/1970. to get the date we multiply seconds by a 1000 
-      startDate: new Date(event.startDate._seconds * 1000),
-      endDate: new Date(event.endDate._seconds * 1000),
+      startDate: new Date(event.startDate.seconds * 1000),
+      endDate: new Date(event.endDate.seconds * 1000),
     }
   }
 
@@ -59,7 +60,8 @@ export const EventCard = ({ event, className, onClick, mlh}) => {
         <CardActionArea onClick={handleOnClick}> 
           <CardHeader
             title={event.title}
-            subheader={/* "Hosted By " +  // Had to remove hosted by, because host will then print undefined if null. ReactDOM is smart  enough to not add attributes if its set to NULL!*/event.host}
+            titleTypographyProps={{ color: 'primary' }}
+            subheader={event.host}
           />
           <CardMedia
             className={classes.media}
@@ -79,12 +81,9 @@ export const EventCard = ({ event, className, onClick, mlh}) => {
             }
           </CardContent>
         </CardActionArea>
-          <CardActions>
-            <Button
-              color="primary"
-              onClick={handleOnClick}
-            >
-              Learn More
+          <CardActions className={classes.cardActions}>
+            <Button color="primary" onClick={handleOnClick}>
+              <MoreHorizIcon color="secondary" />
             </Button>
           </CardActions>
       </Card>

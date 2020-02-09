@@ -1,5 +1,6 @@
 import React from 'react';
 import { EventsSection } from '../../components/EventsSection';
+import { Container } from '@material-ui/core';
 /** 
  * We can create components such as Event List, which desing all the events nicely
  * We can create an event/card component, which has the details of each event (And call/generate them via Event List )
@@ -16,16 +17,8 @@ import { EventsSection } from '../../components/EventsSection';
  *  (And these would be in turnstile/gallery method)
  */
 
-export const Events = () =>  {
-  return (
-      <div>
-          <h1> This is the events Page </h1>
-          <EventsSection localNum={3} outsideNum={8} />
-          
-          {/** WHen we pull the MLH hackathon stuff, we need to pull based on close state, and then include a link at the bottoms that says 
-          " for more hacakthons see this (Filter set to NY/NJ/PA ??? I think that's reasonable" */}
-
-      </div>
-  );
-
-}
+export const Events = () =>  (
+  <Container>
+    <EventsSection localNum={3} outsideNum={8} showToday />
+  </Container>
+);

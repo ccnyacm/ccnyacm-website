@@ -17,8 +17,8 @@ const theme = createMuiTheme({
         text: {
             primary: '#464646',
             secondary: '#000',
-            hint: '#f3cf45',
-            subtitle: '#AEAEAE'
+            subtitle: '#AEAEAE',
+            title: '#3B72AE',
         },
     },
 });

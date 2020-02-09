@@ -61,8 +61,7 @@ export const EventsSection = ({ localNum, outsideNum, hasMore }) => {
         events={events}
         hasMore={hasMore}
         linkRef="/events"
-      ></EventList>
-
+      />
       {/** Even for the event brite events, we only can limit up to 8, as you can see its a lot. */}
       <EventList
         title="Hackathon Events"
@@ -70,13 +69,17 @@ export const EventsSection = ({ localNum, outsideNum, hasMore }) => {
         mlhEvents={true}
         hasMore={hasMore}
         linkRef="/events"
-      ></EventList>
+      />
 
       {/** WHen we pull the MLH hackathon stuff, we need to pull based on close state, and then include a link at the bottoms that says 
           " for more hacakthons see this (Filter set to NY/NJ/PA ??? I think that's reasonable" */}
 
     </>
   );
+};
+
+EventsSection.defaultProps = {
+  hasMore: false,
 };
 
 EventsSection.propTypes = {

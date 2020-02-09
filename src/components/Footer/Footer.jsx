@@ -6,11 +6,11 @@ import {
   TableContainer,
   TableBody,
   TableRow,
-  TableCell,
 } from '@material-ui/core';
 import {
   Facebook as FacebookIcon,
-  Keyboard as KeyboardIcon,
+  Instagram as InstagramIcon,
+  LinkedIn as LinkedInIcon,
 } from '@material-ui/icons';
 import { useStyles } from './style';
 
@@ -30,11 +30,11 @@ export const Footer = () => {
             <Link href="https://www.facebook.com/groups/ccnyacm/">
               <FacebookIcon className={classes.icon} />
             </Link>
-            <Link href="https://www.flickr.com/photos/ccnyacm">
-              <img src={process.env.PUBLIC_URL + '/icons/flickr.png'} alt="flickr" className={classes.icon} />
+            <Link href="https://www.instagram.com/ccnycitycollege/?hl=en">
+              <InstagramIcon className={classes.icon} />
             </Link>
-            <Link href="http://slides.com/ccnyacm">
-              <KeyboardIcon className={classes.icon} />
+            <Link href="https://www.linkedin.com/in/ccnyacm/">
+              <LinkedInIcon className={classes.icon} />
             </Link>
           </TableRow>
         </TableBody>

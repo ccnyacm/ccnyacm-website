@@ -8,6 +8,7 @@ export const useStyles = makeStyles((theme) => ({
     backgroundColor: '#363547',
     width: '100%',
     height: 150,
+    marginTop: theme.spacing(4),
   },
   text: {
     color: '#f7f7f7',
