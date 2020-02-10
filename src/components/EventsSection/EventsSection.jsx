@@ -24,36 +24,36 @@ export const EventsSection = ({ localNum, outsideNum, hasMore }) => {
   const [hackathons, setHackathons] = useState([])
   const { setError, setHasError } = useContext(appContext);
 
-  const getEvents = async () => {
-    try {
-      const data = await getFirstEvents(localNum);
-      setEvents(data);
-    } catch (err) {
-      setError(err.message);
-      setHasError(true)
-    }
-  };
-
   useEffect(() => {
+    const getEvents = async () => {
+      try {
+        const data = await getFirstEvents(localNum);
+        setEvents(data);
+      } catch (err) {
+        setError(err.message);
+        setHasError(true)
+      }
+    };
+
     if (events.length === 0) {
       getEvents();
     }
-  });
-
-  const getMLHEvents = async () => {
-    try {
-      const hacks = await getFirstMLHEvents(outsideNum);
-      setHackathons(hacks)
-    } catch (err) {
-      setError(err.message);
-    }
-  };
+  }, [events.length, localNum, setError, setHasError]);
 
   useEffect(() => {
+    const getMLHEvents = async () => {
+      try {
+        const hacks = await getFirstMLHEvents(outsideNum);
+        setHackathons(hacks)
+      } catch (err) {
+        setError(err.message);
+      }
+    };
+
     if (hackathons.length === 0) {
       getMLHEvents();
     }
-  });
+  },[hackathons.length, outsideNum, setError]);
   return (
     <>
       <EventList
