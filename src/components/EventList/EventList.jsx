@@ -9,7 +9,8 @@ import {
 import { Link } from 'react-router-dom';
 import { string, bool, array, func } from 'prop-types';
 
-export const EventList = ({ events, title, mlhEvents, hasMore, onMore }) => {
+
+export const EventList = ({ events, title, mlhEvents, hasMore, onMore }) => {  
   const displayMoreButton = () => {
     if (hasMore) {
       return (
@@ -26,6 +27,7 @@ export const EventList = ({ events, title, mlhEvents, hasMore, onMore }) => {
     }
     return <span/>
   }
+
   return(
     <div>
       <h2>{title}</h2>
@@ -34,7 +36,10 @@ export const EventList = ({ events, title, mlhEvents, hasMore, onMore }) => {
       {
         events.map(  (event, index) => (
           <Grid item> 
-              <EventCard key={event.id || `event${index}`} event={event} mlh={mlhEvents} /> 
+              <EventCard 
+                key={event.id || `event${index}`}
+                event={event} mlh={mlhEvents}
+              /> 
           </Grid>))
       }
       {displayMoreButton()}

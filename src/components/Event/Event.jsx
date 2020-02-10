@@ -3,7 +3,7 @@
  * However, I forgot that we said we were going to use Material UI components! (Which has cards!)
  */
 
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   Card,
   CardContent,
@@ -13,7 +13,8 @@ import {
   CardActionArea,
   Button,
   CardActions,
-} from '@material-ui/core'
+} from '@material-ui/core';
+import appContext from '../../context/appContext';
 import { MoreHoriz as MoreHorizIcon } from '@material-ui/icons';
 import { useStyles } from './style';
 
@@ -21,8 +22,10 @@ import { useStyles } from './style';
 
 
 
-export const EventCard = ({ event, className, onClick, mlh}) => {
+export const EventCard = ({ event, className, mlh}) => {
   const classes = useStyles();
+  const { setSelectedEvent } = useContext(appContext);
+
   if (mlh) {
     event = {
       ...event,
@@ -48,10 +51,11 @@ export const EventCard = ({ event, className, onClick, mlh}) => {
   const timeRange = `${event.startDate.toLocaleString('en-US', timeConfigOptions)} to ${event.endDate.toLocaleString('en-US', timeConfigOptions)}`;
 
   const handleOnClick = () => {
-    if (onClick == null) {
+    if (mlh) {
       window.location = event.url;
     } else {
-      onClick();
+      setSelectedEvent(event);
+      window.location = `/event/${event.id}`;
     }
   }
 
