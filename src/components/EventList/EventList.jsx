@@ -7,16 +7,16 @@ import {
   CardActionArea,
 } from "@material-ui/core";
 import { Link } from 'react-router-dom';
-import { string, bool, array } from 'prop-types';
+import { string, bool, array, func } from 'prop-types';
 
-export const EventList = ({ events, title, mlhEvents, hasMore, linkRef }) => {
+export const EventList = ({ events, title, mlhEvents, hasMore, onMore }) => {
   const displayMoreButton = () => {
     if (hasMore) {
       return (
         <Card>
-          <CardActionArea style={{height: '100%'}} onClick={() => window.location = linkRef}>
+          <CardActionArea style={{height: '100%'}} onClick={() => onMore(mlhEvents)}>
             <CardContent>
-              <Link to={linkRef}>
+              <Link onClick={() => onMore(hasMore)}>
                 ...More
             </Link>
             </CardContent>
@@ -43,10 +43,17 @@ export const EventList = ({ events, title, mlhEvents, hasMore, linkRef }) => {
   );
 };
 
+EventList.defaultProps = {
+  title: '',
+  mlhEvents: false,
+  hasMore: false,
+  onMore: () => {},
+};
+
 EventList.propTypes = {
   events: array.isRequired,
   title: string,
   mlhEvents: bool,
   hasMore: bool,
-  linkRef: string
+  onMore: func,
 }
