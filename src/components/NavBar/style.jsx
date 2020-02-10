@@ -26,7 +26,9 @@ const useStyles = makeStyles((theme) => ({
   },
   box: {
     minWidth: 255,
-    marginLeft: 0,
+  },
+  menuBox: {
+    marginLeft: 'auto'
   },
 }));
 
