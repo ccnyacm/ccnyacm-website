@@ -41,7 +41,7 @@ export const Home = () => {
       }
     }
     getAboutInfo();
-  }, [setError, setHasError]);
+  }, [setError, setHasError, about]);
 
 
   useEffect(() => {
@@ -55,7 +55,7 @@ export const Home = () => {
       }
     }
     getWhatWeDoInfo();
-  }, [setError, setHasError]);
+  }, [setError, setHasError, thingsWeDo]);
 
   return (
     <Container className={classes.root}>
