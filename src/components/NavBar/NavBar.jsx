@@ -14,8 +14,8 @@ export const NavBar = () => {
     <div className={classes.root}>
       <CssBaseline />
       <ElevationScroll>
-        <AppBar position="fixed">
-          <Toolbar>
+        <AppBar position="fixed" className={classes.root}>
+          <Toolbar className={classes.root}>
             <Typography variant="h6" color="inherit" className={classes.title} component={Link} to="/">
               <img src={process.env.PUBLIC_URL + '/ccny-acm.png'} alt="CCNY ACM" className={classes.image} />
             </Typography>
