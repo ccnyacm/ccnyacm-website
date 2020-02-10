@@ -1,7 +1,8 @@
 import React from "react";
 import {
-  AppBar, Toolbar, Button, Typography, Link, Box,
+  AppBar, Toolbar, Button, Typography, Box,
 } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ElevationScroll } from '../ElevationScroll';
 import useStyles from './style';
@@ -22,8 +23,9 @@ export const NavBar = () => {
             {
               routes.map((route) => (
                 <Button
+                component={Link}
                   color="secondary"
-                  onClick={() => window.location = route === 'Home' ? '/' : route}
+                  to={route === 'Home' ? '/' : route}
                   className={classes.buttonLeft}
                 >
                   {route}
