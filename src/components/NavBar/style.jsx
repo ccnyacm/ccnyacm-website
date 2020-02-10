@@ -10,6 +10,8 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonLeft: {
     marginRight: theme.spacing(2),
+    color: '#fff',
+    fontWeight: '600',
   },
   buttonRight: {
     marginLeft: theme.spacing(2),
@@ -17,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
   image: {
     width: 120,
     height: 50,
+  },
+  box: {
+    marginRight: '60%',
   },
 }));
 
