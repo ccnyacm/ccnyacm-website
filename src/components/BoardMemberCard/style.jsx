@@ -9,6 +9,9 @@ export const useStyles = makeStyles((theme) => ({
   actionArea: {
     display: 'flex',
     flexDirection: 'row',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+    },
   },
   button: {
     marginLeft: 'auto',
