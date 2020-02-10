@@ -3,13 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
   },
   grow: {
     flexGrow: 1,
   },
   title: {
-    flexGrow: 1,
     textDecoration: 'none',
   },
   buttonLeft: {
@@ -18,14 +17,8 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: '600',
   },
   buttonRight: {
-    marginLeft: '60%',
-    [theme.breakpoints.down('md')]: {
-      marginLeft: '50%',
-    },
-    [theme.breakpoints.down('sm')]: {
-      marginLeft: 'auto',
-    },
-    minWidth: 100
+    minWidth: 100,
+    marginLeft: 'auto',
   },
   image: {
     width: 120,
@@ -33,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
   box: {
     minWidth: 255,
+    marginLeft: 0,
   },
 }));
 
