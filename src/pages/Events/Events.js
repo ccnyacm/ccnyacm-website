@@ -1,6 +1,7 @@
 import React from 'react';
 import { EventsSection } from '../../components/EventsSection';
 import { Container } from '@material-ui/core';
+import { TodayEvents } from '../../components/TodayEvents/TodayEvents';
 /** 
  * We can create components such as Event List, which desing all the events nicely
  * We can create an event/card component, which has the details of each event (And call/generate them via Event List )
@@ -17,8 +18,9 @@ import { Container } from '@material-ui/core';
  *  (And these would be in turnstile/gallery method)
  */
 
-export const Events = () =>  (
+export const Events = () => (
   <Container>
-    <EventsSection localNum={3} outsideNum={8} showToday />
+    <TodayEvents />
+    <EventsSection localNum={3} outsideNum={8} hasMore />
   </Container>
-);
+  );
