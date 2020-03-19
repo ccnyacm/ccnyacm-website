@@ -26,7 +26,7 @@ export async function getEvents() {
 /**
  * This function gets first num elements in our events collection
  */
-export async function getFirstEvents(num:Number) {
+export async function getFirstEvents(num: number) {
   try {
     const now = new Date();
     const querySnapshot = await db.collection('events')
@@ -68,6 +68,19 @@ export async function getEventsByDate(date: Date) {
       }
     });
     return events;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getEventById(id: string) {
+  try {
+    const doc = await db.collection('events').doc(id).get();
+    if (doc.exists) {
+      return doc.data();
+    } else {
+      throw new Error(`Then document with id ${id} does not exist`);
+    }
   } catch (error) {
     throw error;
   }
