@@ -22,9 +22,9 @@ import { useStyles } from './style';
 
 
 
-export const EventCard = ({ event, className, mlh}) => {
+export const Event = ({ event, className, mlh}) => {
   const classes = useStyles();
-  const { setSelectedEvent } = useContext(appContext);
+  const { setSelectedEventId } = useContext(appContext);
 
   if (mlh) {
     event = {
@@ -54,7 +54,7 @@ export const EventCard = ({ event, className, mlh}) => {
     if (mlh) {
       window.location = event.url;
     } else {
-      setSelectedEvent(event);
+      setSelectedEventId(event.id)
       window.location = `/event/${event.id}`;
     }
   }
