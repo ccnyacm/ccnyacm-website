@@ -7,8 +7,8 @@ export const AppState = ({ children }) => {
   const INITIAL_STATE = {
     error: '',
     hasError: false,
-    selectedEvents: {},
-    selectedMEmber: {},
+    selectedEventId: '',
+    selectedMemberId: '',
   };
 
   const [state, dispatch] = useReducer(appReducer, INITIAL_STATE);
@@ -21,11 +21,11 @@ export const AppState = ({ children }) => {
     dispatch({ type: ERROR_CHANGE, payload: value })
   };
 
-  const setSelectedEvent = (event) => {
+  const setSelectedEventId = (event) => {
     dispatch({ type: SELECTED_EVENT_CHANGE, payload: event });
   };
 
-  const setSelectedMember = (member) => {
+  const setSelectedMemberId = (member) => {
     dispatch({ type: SELECTED_MEMBER_CHANGE, payload: member });
   };
   
@@ -35,8 +35,8 @@ export const AppState = ({ children }) => {
         ...state,
         setHasError,
         setError,
-        setSelectedEvent,
-        setSelectedMember,
+        setSelectedEventId,
+        setSelectedMemberId,
       }}
     >
       {children}

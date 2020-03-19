@@ -7,9 +7,9 @@ export default (state, action) => {
     case ERROR_CHANGE:
       return { ...state, error: action.payload };
     case SELECTED_EVENT_CHANGE:
-      return {...state, selectedEvent: action.payload};
+      return {...state, selectedEventId: action.payload};
     case SELECTED_MEMBER_CHANGE:
-      return { ...state, selectedMember: action.payload };
+      return { ...state, selectedMemberId: action.payload };
     default:
       return state;
   }
