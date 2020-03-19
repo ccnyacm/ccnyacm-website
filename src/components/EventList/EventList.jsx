@@ -1,5 +1,5 @@
 import React from 'react';
-import {EventCard} from '../Event/Event'
+import {Event} from '../Event/Event'
 import {
   Grid,
   Card,
@@ -36,9 +36,10 @@ export const EventList = ({ events, title, mlhEvents, hasMore, onMore }) => {
       {
         events.map(  (event, index) => (
           <Grid item> 
-              <EventCard 
+              <Event 
                 key={event.id || `event${index}`}
-                event={event} mlh={mlhEvents}
+                event={event} 
+                mlh={mlhEvents}
               /> 
           </Grid>))
       }
