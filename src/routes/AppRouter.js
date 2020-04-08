@@ -14,8 +14,8 @@ export const AppRouter = () => (
       <Switch>
         <PublicRoute exact path="/" component={Home} />
         <PublicRoute exact path="/events" component={Events} />
-        <PublicRoute exact path="/event/:id" component={SingleEvent} />
-        <PublicRoute exact path="/member/:id" component={SingleMember} />
+        <PublicRoute exact path="/events/:id" component={SingleEvent} />
+        <PublicRoute exact path="/members/:id" component={SingleMember} />
         <PublicRoute path="*" component={Error} />
       </Switch>
     </Router>
