@@ -35,7 +35,7 @@ export const EventList = ({ events, title, mlhEvents, hasMore, onMore }) => {
       <Grid container spacing={2}>
       {
         events.map(  (event, index) => (
-          <Grid item> 
+          <Grid item key={event.id || `event${index}`}> 
               <Event 
                 key={event.id || `event${index}`}
                 event={event} 
