@@ -3,7 +3,7 @@
  * However, I forgot that we said we were going to use Material UI components! (Which has cards!)
  */
 
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   Card,
   CardContent,
@@ -13,15 +13,21 @@ import {
   CardActionArea,
   Button,
   CardActions,
-} from '@material-ui/core'
+  Link as ExternalLink,
+} from '@material-ui/core';
+import { Link } from 'react-router-dom'
+import appContext from '../../context/appContext';
+import { MoreHoriz as MoreHorizIcon } from '@material-ui/icons';
 import { useStyles } from './style';
 
 /** NOTE, this page creates the Card, by calling Material UI, and passing props through parent Event */
 
 
 
-export const EventCard = ({ event, className, onClick, mlh}) => {
+export const Event = ({ event, className, mlh}) => {
   const classes = useStyles();
+  const { setSelectedEventId } = useContext(appContext);
+
   if (mlh) {
     event = {
       ...event,
@@ -36,8 +42,8 @@ export const EventCard = ({ event, className, onClick, mlh}) => {
       ...event,
       // dates come as a Firestore.TimeStamp object which has the form {_seconds: 0, _nanoseconds: 0}
       // where seconds in the number of seconds since 9/1/1970. to get the date we multiply seconds by a 1000 
-      startDate: new Date(event.startDate._seconds * 1000),
-      endDate: new Date(event.endDate._seconds * 1000),
+      startDate: new Date(event.startDate.seconds * 1000),
+      endDate: new Date(event.endDate.seconds * 1000),
     }
   }
 
@@ -45,21 +51,18 @@ export const EventCard = ({ event, className, onClick, mlh}) => {
   const dateRange = `${event.startDate.toLocaleString('en-US', dateConfigOptions)} - ${event.endDate.toLocaleString('en-US', dateConfigOptions)}`;
   const timeConfigOptions = { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true};
   const timeRange = `${event.startDate.toLocaleString('en-US', timeConfigOptions)} to ${event.endDate.toLocaleString('en-US', timeConfigOptions)}`;
-
-  const handleOnClick = () => {
-    if (onClick == null) {
-      window.location = event.url;
-    } else {
-      onClick();
-    }
-  }
-
+  const component = mlh ? ExternalLink : Link;
   return(
       <Card className={`${classes.card} ${className}`}>
-        <CardActionArea onClick={handleOnClick}> 
+        <CardActionArea 
+          component={component} 
+          to={`/events/${event.id}`}
+          href={event.url }
+        > 
           <CardHeader
             title={event.title}
-            subheader={/* "Hosted By " +  // Had to remove hosted by, because host will then print undefined if null. ReactDOM is smart  enough to not add attributes if its set to NULL!*/event.host}
+            titleTypographyProps={{ color: 'primary' }}
+            subheader={event.host}
           />
           <CardMedia
             className={classes.media}
@@ -79,12 +82,9 @@ export const EventCard = ({ event, className, onClick, mlh}) => {
             }
           </CardContent>
         </CardActionArea>
-          <CardActions>
-            <Button
-              color="primary"
-              onClick={handleOnClick}
-            >
-              Learn More
+          <CardActions className={classes.cardActions}>
+        <Button color="primary" component={component} to={`/events/${event.id}`} href={event.url}>
+              <MoreHorizIcon color="secondary" />
             </Button>
           </CardActions>
       </Card>

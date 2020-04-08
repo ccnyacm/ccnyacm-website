@@ -16,9 +16,16 @@ export const BoardMemberCard = ({ member }) => {
   const {firstName, lastName, profilePicture, shortBiography, title } = member;
   const fullName = `${firstName} ${lastName}`;
 
+  const handleOnClick = () => {
+    window.location = `/member/${member.id}`
+  }
+
   return (
     <Card>
-      <CardActionArea className={classes.actionArea}>
+      <CardActionArea 
+        className={classes.actionArea}
+        onClick={handleOnClick}
+      >
         <CardMedia 
           className={classes.picture}
           image={profilePicture}

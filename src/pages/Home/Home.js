@@ -29,37 +29,33 @@ export const Home = () => {
       description: "Hello World!",
     }
   ]
-  const getAboutInfo = async () => {
-    try {
-      const aboutData = await getInfo('about');
-      setAbout(aboutData);
-    } catch(err) {
-      setError(err.message);
-      setHasError(true);
-    }
-  }
 
   useEffect(() => {
-    if (about === '') {
-      getAboutInfo();
+    const getAboutInfo = async () => {
+      try {
+        const aboutData = await getInfo('about');
+        setAbout(aboutData);
+      } catch (err) {
+        setError(err.message);
+        setHasError(true);
+      }
     }
-  });
+    getAboutInfo();
+  }, [setError, setHasError, about]);
 
-  const getWhatWeDoInfo = async () => {
-    try {
-      const data = await getInfo('things');
-      setThingsWeDo(data);
-    } catch (err) {
-      setError(err.message);
-      setHasError(true);
-    }
-  }
 
   useEffect(() => {
-    if (thingsWeDo === '') {
-      getWhatWeDoInfo();
+    const getWhatWeDoInfo = async () => {
+      try {
+        const data = await getInfo('things');
+        setThingsWeDo(data);
+      } catch (err) {
+        setError(err.message);
+        setHasError(true);
+      }
     }
-  });
+    getWhatWeDoInfo();
+  }, [setError, setHasError, thingsWeDo]);
 
   return (
     <Container className={classes.root}>
@@ -83,6 +79,7 @@ export const Home = () => {
             localNum={3}
             outsideNum={3}
             hasMore
+            onMore={() => window.location = '/events'}
           />
       </Section>
         <BoardMembers />
