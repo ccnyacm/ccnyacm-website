@@ -13,7 +13,9 @@ import {
   CardActionArea,
   Button,
   CardActions,
+  Link as ExternalLink,
 } from '@material-ui/core';
+import { Link } from 'react-router-dom'
 import appContext from '../../context/appContext';
 import { MoreHoriz as MoreHorizIcon } from '@material-ui/icons';
 import { useStyles } from './style';
@@ -49,19 +51,14 @@ export const Event = ({ event, className, mlh}) => {
   const dateRange = `${event.startDate.toLocaleString('en-US', dateConfigOptions)} - ${event.endDate.toLocaleString('en-US', dateConfigOptions)}`;
   const timeConfigOptions = { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true};
   const timeRange = `${event.startDate.toLocaleString('en-US', timeConfigOptions)} to ${event.endDate.toLocaleString('en-US', timeConfigOptions)}`;
-
-  const handleOnClick = () => {
-    if (mlh) {
-      window.location = event.url;
-    } else {
-      setSelectedEventId(event.id)
-      window.location = `/event/${event.id}`;
-    }
-  }
-
+  const component = mlh ? ExternalLink : Link;
   return(
       <Card className={`${classes.card} ${className}`}>
-        <CardActionArea onClick={handleOnClick}> 
+        <CardActionArea 
+          component={component} 
+          to={`/events/${event.id}`}
+          href={event.url }
+        > 
           <CardHeader
             title={event.title}
             titleTypographyProps={{ color: 'primary' }}
@@ -86,7 +83,7 @@ export const Event = ({ event, className, mlh}) => {
           </CardContent>
         </CardActionArea>
           <CardActions className={classes.cardActions}>
-            <Button color="primary" onClick={handleOnClick}>
+        <Button color="primary" component={component} to={`/events/${event.id}`} href={event.url}>
               <MoreHorizIcon color="secondary" />
             </Button>
           </CardActions>

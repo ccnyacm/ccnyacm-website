@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   AppBar, Toolbar, Button, Typography, Box,
 } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ElevationScroll } from '../ElevationScroll';
 import { DrawerMenu } from '../DrawerMenu';
@@ -10,7 +10,7 @@ import useStyles from './style';
 
 export const NavBar = () => {
   const classes = useStyles();
-  const routes = ['Home', 'Events', 'About'];
+  const routes = ['home', 'events', 'about'];
   const [hideDrawer, setHideDrawer] = useState(window.innerWidth > 760)
 
   useEffect(() => {
@@ -26,13 +26,15 @@ export const NavBar = () => {
     };
   }, [hideDrawer])
 
+  console.log(window.location)
+
   return (
     <div className={classes.root}>
       <CssBaseline />
       <ElevationScroll>
         <AppBar position="fixed" className={classes.root}>
           <Toolbar className={classes.root}>
-            <Typography variant="h6" color="inherit" className={classes.title} component={Link} to="/">
+            <Typography variant="h6" color="inherit" className={classes.title} component={NavLink} to="/">
               <img src={process.env.PUBLIC_URL + '/ccny-acm.png'} alt="CCNY ACM" className={classes.image} />
             </Typography>
             {
@@ -41,10 +43,11 @@ export const NavBar = () => {
                   {
                     routes.map((route) => (
                       <Button
-                        component={Link}
+                        component={NavLink}
                         color="secondary"
-                        to={route === 'Home' ? '/' : route}
+                        to={route === 'home' ? '/' : route}
                         className={classes.buttonLeft}
+                        key={route}
                       >
                         {route}
                       </Button>
