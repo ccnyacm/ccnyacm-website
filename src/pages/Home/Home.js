@@ -5,6 +5,7 @@ import {
   Section,
   EventsSection,
   BoardMembers,
+  HomeBanner,
 } from '../../components';
 import {
   Container,
@@ -58,31 +59,30 @@ export const Home = () => {
   }, [setError, setHasError, thingsWeDo]);
 
   return (
-    <Container className={classes.root}>
-      <Carousel autoPlay animation="slide">
-        {items.map((item) => (
-          <CarouselItem item={item} />
-        ))}
-      </Carousel>
-      <Section title={about.title}>
-        <Typography variant="p" color="secondary">
-          {about.content}
-        </Typography>
-      </Section>
-      <Section title={thingsWeDo.title}>
-        <Typography variant="p" color="secondary">
-           {thingsWeDo.content}
-        </Typography>
-      </Section>
-      <Section title="Events">
+    <div>
+      <HomeBanner />
+      <Container className={classes.root}>
+        <Section title={about.title}>
+          <Typography variant="p" color="secondary">
+            {about.content}
+          </Typography>
+        </Section>
+        <Section title={thingsWeDo.title}>
+          <Typography variant="p" color="secondary">
+            {thingsWeDo.content}
+          </Typography>
+        </Section>
+        <Section title="Events">
           <EventsSection
             localNum={3}
             outsideNum={3}
             hasMore
             onMore={() => window.location = '/events'}
           />
-      </Section>
+        </Section>
         <BoardMembers />
-    </Container>
+      </Container>
+    </div>
+
   );
 };
