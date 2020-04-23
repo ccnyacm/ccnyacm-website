@@ -17,7 +17,6 @@ export const PublicRoute = ({
     component={(props) => (
       <Box style={{ backgroundColor: '#fff' }}>
         <NavBar />
-        <Toolbar />
         <ErrorDialog />
         <Component {...props} />
         <ScrollToTop scrollStep={100} delayInMS={16.6}>

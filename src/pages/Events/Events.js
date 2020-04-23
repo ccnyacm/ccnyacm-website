@@ -1,6 +1,6 @@
 import React from 'react';
 import { EventsSection } from '../../components/EventsSection';
-import { Container } from '@material-ui/core';
+import { Container, Toolbar } from '@material-ui/core';
 import { TodayEvents } from '../../components/TodayEvents/TodayEvents';
 /** 
  * We can create components such as Event List, which desing all the events nicely
@@ -20,6 +20,7 @@ import { TodayEvents } from '../../components/TodayEvents/TodayEvents';
 
 export const Events = () => (
   <Container>
+    <Toolbar />
     <TodayEvents />
     <EventsSection localNum={3} outsideNum={8} hasMore />
   </Container>

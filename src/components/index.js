@@ -8,3 +8,4 @@ export * from './Event';
 export * from './BoardMemberCard';
 export * from './BoardMemberCardList';
 export * from './BoardMembers';
+export * from './HomeBanner';
