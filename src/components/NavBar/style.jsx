@@ -30,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
   menuBox: {
     marginLeft: 'auto'
   },
+  joinButton: {
+    fontWeight: '700'
+  }
 }));
 
 export default useStyles;

@@ -6,20 +6,17 @@ import {
   Typography,
 } from '@material-ui/core';
 
-export const Section = ({ children, title }) => {
-    const classes = useStyles();
+export const Section = ({ children, title, className }) => {
+  const classes = useStyles();
     
-    return (
-        <Box component="div" className={classes.container}>
-          <Typography variant="h5" color="inherit" className={classes.title}>
-            {title}
-          </Typography>
-          <Container>
-              {children}
-            <Container>
-              <Box borderBottom={0.5} className={classes.border} />
-            </Container>
-          </Container>
-        </Box>
-    )
+  return (
+    <Box className={`${classes.container} ${className}`}>
+      <Typography variant="h4" color="inherit" className={classes.title}>
+        {title}
+      </Typography>
+      <Container>
+          {children}
+      </Container>
+    </Box>
+  );
 }

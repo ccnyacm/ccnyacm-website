@@ -37,7 +37,7 @@ export const EventsSection = ({ localNum, outsideNum, hasMore, onMore }) => {
       }
     };
     getEvents();
-  }, [ eventNum, setError, setHasError]);
+  }, []);
 
   useEffect(() => {
     const getMLHEvents = async () => {
@@ -49,7 +49,7 @@ export const EventsSection = ({ localNum, outsideNum, hasMore, onMore }) => {
       }
     };
       getMLHEvents();
-  },[hackNum, setError]);
+  },[]);
 
   const handleOnMore = (mlhEvents) => {
     if (onMore !== undefined) {
