@@ -19,7 +19,12 @@ export const HomeBanner = () => {
         <Typography variant="h2" className={classes.title}>
           CCNY ACM
         </Typography>
-        <Button variant="contained" color="primary" className={classes.button}>
+        <Button 
+          variant="contained" 
+          color="primary" 
+          className={classes.button}
+          onClick={() => window.location = 'http://eepurl.com/dLRIjg'}
+        >
           <Typography className={classes.buttonText}>
             Join our newsletter
           </Typography>
