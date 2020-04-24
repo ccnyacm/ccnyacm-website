@@ -66,7 +66,9 @@ export const NavBar = () => {
                   className={classes.buttonRight}
                   onClick={() => window.location = 'http://eepurl.com/dLRIjg'}
                 >
-                  Join Us
+                  <Typography className={classes.joinButton}>
+                    Join Us
+                  </Typography>
                 </Button>
               )
             }
