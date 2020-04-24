@@ -6,6 +6,7 @@ import appContext from '../../context/appContext';
 
 export const BoardMembers = () => {
   const [members, setMembers] = useState([]);
+  const [sorted, setSorted] = useState(false)
   const { setError, setHasError } = useContext(appContext);
 
   useEffect(() => {
@@ -19,7 +20,17 @@ export const BoardMembers = () => {
       }
     };
     getMembers();
-  }, [setError, setHasError, members])
+  }, []);
+
+  useEffect(() => {
+    const sortMembers = () => {
+      members.sort((member1, member2) => member1.priority - member2.priority);
+    }
+    if (members.length > 0 && !sorted) {
+      sortMembers();
+      setSorted(true);
+    }
+  }, [members, sorted]);
 
   return (
     <Section title="Meet the Board">
