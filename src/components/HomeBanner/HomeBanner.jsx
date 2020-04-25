@@ -13,10 +13,10 @@ export const HomeBanner = () => {
   return (
     <Paper className={classes.container}>
       <Card className={classes.innerBanner}>
-        <Typography variant="h3">
+        <Typography className={classes.suptitle}>
           Welcome to
         </Typography>
-        <Typography variant="h2" className={classes.title}>
+        <Typography className={classes.title}>
           CCNY ACM
         </Typography>
         <Button 

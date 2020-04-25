@@ -7,14 +7,12 @@ export const useStyles = makeStyles((theme) => ({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    minHeight: 500,
-    marginTop: theme.spacing(4),
     backgroundRepeat: 'no-repeat',
     backgrounSize: 'cover',
     backgroundPosition: 'center',
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${process.env.PUBLIC_URL}/pc_bg.jpg)`,
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${process.env.PUBLIC_URL}/bg_img.jpg)`,
     padding: theme.spacing(2),
-    margin: 0,
+    marginTop: '5%',
   },
   text: {
     color: '#fff',
@@ -27,6 +25,16 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2),
     fontWeight: "700",
+    fontSize: 70,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 40,
+    },
+  },
+  suptitle: {
+    fontSize: 50,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 20,
+    },
   },
   innerBanner: {
     display: 'flex',
@@ -36,6 +44,13 @@ export const useStyles = makeStyles((theme) => ({
     width: '45%',
     height: '100%',
     padding: '5%',
+    marginTop: '5%',
+    marginBottom: '6%',
+    [theme.breakpoints.down('sm')]: {
+      marginTop: '15%',
+      width: '80%',
+      padding: '10%',
+    },
   },
 
   button: {

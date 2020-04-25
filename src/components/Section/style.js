@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     paddingTop: '4%',
+    paddingBottom: '5%'
   }
 }));
 

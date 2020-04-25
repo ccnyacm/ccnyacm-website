@@ -5,6 +5,7 @@ import {
   HomeBanner,
   AboutSection,
   Section,
+  ParagraphList,
 } from '../../components';
 import {
   Box,
@@ -37,10 +38,8 @@ export const Home = () => {
       <HomeBanner />
       <Box className={classes.root}>
         <AboutSection />
-        <Section title={thingsWeDo.title}>
-          <Typography variant="p" color="secondary">
-            {thingsWeDo.content}
-          </Typography>
+        <Section title="What We Do">
+          <ParagraphList />
         </Section>
         <Section title="Events" className={classes.events}>
           <EventsSection

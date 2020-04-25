@@ -10,3 +10,5 @@ export * from './BoardMemberCardList';
 export * from './BoardMembers';
 export * from './HomeBanner';
 export * from './AboutSection';
+export * from './Paragraph';
+export * from './ParagraphList';

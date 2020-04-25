@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 export const useStyles = makeStyles({
   paper: {
     paddingHorizontal: '2%',
-    paddingBottom: '3%',
     width: '80%',
     marginLeft: 'auto',
     marginRight: 'auto',
