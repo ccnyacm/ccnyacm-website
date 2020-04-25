@@ -40,7 +40,7 @@ export const DrawerMenu = ({ routes }) => {
                   button
                   key={route}
                   component={Link}
-                  to={route === 'Home' ? '/' : route}
+                  to={route === 'home' ? '/' : route}
                 >
                   <ListItemText>
                     {route}
