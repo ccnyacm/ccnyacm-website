@@ -6,7 +6,9 @@ import {
   Typography,
   Button,
   CircularProgress,
+  Link as ExternalLink
 } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import { getEventsByDate } from '../../services/eventServices';
 import { getMLHEventsByDate } from '../../services/mlhEventRequest';
 import appContext from '../../context/appContext';
@@ -37,11 +39,11 @@ export const TodayEvents = () => {
     getTodayEvents();
   }, [setError, setHasError]);
 
-  const handleClick = (id, url) => {
-    if (id) {
-      window.location = `/${id}`;
+  const getCorrectLink = (url) => {
+    if (url) {
+      return ExternalLink
     } else {
-      window.location = url
+      return Link;
     }
   }
 
@@ -73,7 +75,13 @@ export const TodayEvents = () => {
             <Typography className={classes.text}>
               {description}
             </Typography>
-            <Button variant="contained" color="primary" onClick={() => handleClick(id, url)}>
+            <Button 
+              variant="contained"
+              color="primary"
+              component={getCorrectLink(url)}
+              to={`/${id}`} // if local link read this line
+              href={url} // if external link read this line
+            >
               Learn More
             </Button>
           </Paper>
