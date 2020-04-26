@@ -11,16 +11,16 @@ import {
   Divider,
   Link,
 } from '@material-ui/core';
+import { Redirect } from 'react-router-dom';
 import { getEventById } from '../../services';
-import appContext from '../../context/appContext';
 import { useStyles } from './styles';
 
 
 export const SingleEvent = () => {
   const [event, setEvent] = useState({});
+  const [hasError, setHasError] = useState(false);
   const [dateRange, setDateRange] = useState('');
   const [timeRange, setTimeRange] = useState('');
-  const { setError, setHasError } = useContext(appContext);
   const classes = useStyles();
 
 
@@ -35,13 +35,19 @@ export const SingleEvent = () => {
         const data = await getEventById(getIdFromUrl());
         setEvent(data);
       } catch(error) {
-        setError(error.message);
         setHasError(true);
       }
     };
     getEvent();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const redirectOnError = () => {
+    if (hasError) {
+      return <Redirect to="error" />
+    }
+    return null;
+  }
 
   useEffect(() => {
     if (event.hasOwnProperty('startDate') && event.hasOwnProperty('endDate')) {
@@ -60,6 +66,7 @@ export const SingleEvent = () => {
 
   return (
     <Container className={classes.root}>
+      {redirectOnError()}
       <Toolbar />
       <Card className={classes.paper}>
         <Box className={classes.box}> 
