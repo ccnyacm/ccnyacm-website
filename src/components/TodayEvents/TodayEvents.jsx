@@ -37,6 +37,13 @@ export const TodayEvents = () => {
     getTodayEvents();
   }, [setError, setHasError]);
 
+  const handleClick = (id, url) => {
+    if (id) {
+      window.location = `/${id}`;
+    } else {
+      window.location = url
+    }
+  }
 
   return loading ? <CircularProgress /> : events.length === 0 ?
   (
@@ -50,7 +57,7 @@ export const TodayEvents = () => {
   (
     <Carousel animation="slide">
       {
-        events.map(({ imageUrl, title, startDate, endDate, url, description }) => (
+        events.map(({ id, imageUrl, title, startDate, endDate, url, description }) => (
           <Paper
             className={classes.container}
             key={title}
@@ -66,7 +73,7 @@ export const TodayEvents = () => {
             <Typography className={classes.text}>
               {description}
             </Typography>
-            <Button variant="contained" color="primary" onClick={() => window.location = url}>
+            <Button variant="contained" color="primary" onClick={() => handleClick(id, url)}>
               Learn More
             </Button>
           </Paper>

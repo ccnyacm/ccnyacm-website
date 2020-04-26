@@ -7,31 +7,12 @@ import {
   Section,
   ParagraphList,
 } from '../../components';
-import {
-  Box,
-  Typography,
-} from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import useStyles from './style';
-import { getInfo } from '../../services';
-import appContext from '../../context/appContext';
+
 
 export const Home = () => {
-  const [thingsWeDo, setThingsWeDo] = useState('');
-  const { setError, setHasError } = useContext(appContext);
   const classes = useStyles();
-
-  useEffect(() => {
-    const getWhatWeDoInfo = async () => {
-      try {
-        const data = await getInfo('things');
-        setThingsWeDo(data);
-      } catch (err) {
-        setError(err.message);
-        setHasError(true);
-      }
-    }
-    getWhatWeDoInfo();
-  }, []);
 
   return (
     <div>

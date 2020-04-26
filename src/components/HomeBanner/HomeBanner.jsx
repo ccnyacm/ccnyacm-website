@@ -26,7 +26,7 @@ export const HomeBanner = () => {
           onClick={() => window.location = 'http://eepurl.com/dLRIjg'}
         >
           <Typography className={classes.buttonText}>
-            Join our newsletter
+            Join Our Mailing List
           </Typography>
       </Button>
       </Card>

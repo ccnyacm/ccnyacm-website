@@ -56,7 +56,7 @@ export const Event = ({ event, className, mlh}) => {
       <Card className={`${classes.card} ${className}`}>
         <CardActionArea 
           component={component} 
-          to={`/events/${event.id}`}
+          to={`/${event.id}`}
           href={event.url }
         > 
           <CardHeader
@@ -83,7 +83,7 @@ export const Event = ({ event, className, mlh}) => {
           </CardContent>
         </CardActionArea>
           <CardActions className={classes.cardActions}>
-        <Button color="primary" component={component} to={`/events/${event.id}`} href={event.url}>
+        <Button color="primary" component={component} to={`/${event.id}`} href={event.url}>
               <MoreHorizIcon color="secondary" />
             </Button>
           </CardActions>

@@ -10,9 +10,9 @@ export const useStyles = makeStyles((theme) => ({
     backgroundRepeat: 'no-repeat',
     backgrounSize: 'cover',
     backgroundPosition: 'center',
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${process.env.PUBLIC_URL}/bg_img.jpg)`,
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${process.env.PUBLIC_URL}/bg_img1.png)`,
     padding: theme.spacing(2),
-    marginTop: '5%',
+    marginTop: '4%',
   },
   text: {
     color: '#fff',
@@ -25,14 +25,16 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2),
     fontWeight: "700",
-    fontSize: 70,
-    [theme.breakpoints.down('sm')]: {
+    fontSize: 90,
+    [theme.breakpoints.down('xs')]: {
       fontSize: 40,
     },
+    color: '#fff',
   },
   suptitle: {
-    fontSize: 50,
-    [theme.breakpoints.down('sm')]: {
+    color: '#fff',
+    fontSize: 70,
+    [theme.breakpoints.down('xs')]: {
       fontSize: 20,
     },
   },
@@ -45,12 +47,16 @@ export const useStyles = makeStyles((theme) => ({
     height: '100%',
     padding: '5%',
     marginTop: '5%',
-    marginBottom: '6%',
+    marginBottom: '5%',
     [theme.breakpoints.down('sm')]: {
       marginTop: '15%',
       width: '80%',
       padding: '10%',
     },
+    backgroundColor: 'transparent',
+    borderColor: '#fff',
+    borderWidth: 2,
+    borderStyle: 'solid',
   },
 
   button: {

@@ -30,7 +30,7 @@ export const ParagraphList = () => {
   ];
 
   return (
-    <Grid container justify="center" spacing={10}>
+    <Grid container justify="center" spacing={10} style={{width: '100%'}}>
       {
         things.map((item) => (
           <Grid item md={3} xs={12}>

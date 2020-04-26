@@ -15,7 +15,6 @@ export const useStyles = makeStyles((theme) => ({
     fontWeight: "600",
     fontSize: 14,
     padding: theme.spacing(1),
-    maxWidth: '50%',
   },
   title: {
     color: '#fff',
