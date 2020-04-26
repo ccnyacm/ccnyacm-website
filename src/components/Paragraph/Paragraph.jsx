@@ -15,7 +15,7 @@ export const Paragraph = ({ image, title, content }) => {
       <Typography className={classes.title}>
         {title}
       </Typography>
-      <Typography>
+      <Typography align="center">
         {content}
       </Typography>
     </Box>
