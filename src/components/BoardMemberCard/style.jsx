@@ -22,6 +22,7 @@ export const useStyles = makeStyles((theme) => ({
   cardContent: {
     marginTop: 0,
     alignSelf: 'flex-start',
+    maxWidth: 300
   },
   subtitle: {
     color: theme.palette.text.subtitle,
