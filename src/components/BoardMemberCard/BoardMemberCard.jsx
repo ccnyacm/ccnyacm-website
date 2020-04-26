@@ -56,7 +56,7 @@ export const BoardMemberCard = ({ member }) => {
           <Typography className={classes.subtitle}>
             {`CC ${graduationYear}`}
           </Typography>
-          <Typography variant="body2" color="secondary" component="p">
+          <Typography variant="body2" color="secondary">
             {biography}
           </Typography>
         </CardContent>
