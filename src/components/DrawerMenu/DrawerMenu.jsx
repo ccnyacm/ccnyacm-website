@@ -5,6 +5,8 @@ import {
   ListItem,
   ListItemText,
   IconButton,
+  Toolbar,
+  Divider,
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { Menu as MenuIcon } from '@material-ui/icons';
@@ -19,6 +21,8 @@ export const DrawerMenu = ({ routes }) => {
     setOpenDrawer(!openDrawer);
   };
 
+  const remainingRoutes = routes.filter((route) => route !== 'home');
+
   return (
     <>
       <IconButton onClick={toggleDrawer}>
@@ -29,35 +33,33 @@ export const DrawerMenu = ({ routes }) => {
         open={openDrawer}
         onClose={toggleDrawer}
       >
-        <div
-          role="presentation"
-          onClick={toggleDrawer}
-        >
-          <List>
-            {
-              routes.map((route) => (
-                <ListItem
-                  button
-                  key={route}
-                  component={Link}
-                  to={route === 'home' ? '/' : route}
-                >
-                  <ListItemText>
-                    {route}
-                  </ListItemText>
-                </ListItem>
-              ))
-            }
-            <ListItem
-              button
-              onClick={() => window.location = 'http://eepurl.com/dLRIjg'}
+        <Toolbar />
+        <List>
+          {
+            remainingRoutes.map((route) => (
+              <ListItem
+                button
+                key={route}
+                component={Link}
+                to={route === 'home' ? '/' : route}
               >
-                <ListItemText>
-                  Join Us
-                </ListItemText>
+                <ListItemText 
+                  primary={route.toUpperCase()}
+                  primaryTypographyProps={{ className: classes.text }}
+                  />
               </ListItem>
-          </List>
-        </div>
+            ))
+          }
+          <ListItem
+            button
+            onClick={() => window.location = 'http://eepurl.com/dLRIjg'}
+            >
+              <ListItemText 
+                primary="JOIN US"
+                primaryTypographyProps={{ className: classes.text }}
+              />
+            </ListItem>
+        </List>
       </Drawer>
     </>
   );

@@ -5,4 +5,7 @@ export const useStyles = makeStyles((theme) => ({
     color: '#fff',
     fontSize: 30,
   },
+  text: {
+    fontWeight: '700',
+  }
 }));
