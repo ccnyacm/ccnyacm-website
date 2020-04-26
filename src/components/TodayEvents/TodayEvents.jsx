@@ -47,8 +47,8 @@ export const TodayEvents = () => {
 
   return loading ? <CircularProgress /> : events.length === 0 ?
   (
-    <Paper className={classes.container}>
-      <Typography variant="h2" >
+    <Paper className={classes.altContainer}>
+      <Typography variant="h4" align="center" className={classes.altBanner} >
         No Events Today!
       </Typography>
     </Paper>
