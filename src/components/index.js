@@ -12,3 +12,5 @@ export * from './HomeBanner';
 export * from './AboutSection';
 export * from './Paragraph';
 export * from './ParagraphList';
+export * from './SignInForm';
+export * from './PrivateNavBar';

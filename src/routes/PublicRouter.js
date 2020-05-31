@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { func } from 'prop-types';
-import { Fab, Toolbar, Box } from '@material-ui/core';
+import { Fab, Box } from '@material-ui/core';
 import { KeyboardArrowUp } from '@material-ui/icons'
 import { ScrollToTop } from '../components/ScrollToTop';
 import { NavBar } from '../components/NavBar';
