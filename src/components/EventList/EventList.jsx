@@ -14,15 +14,17 @@ export const EventList = ({ events, title, mlhEvents, hasMore, onMore }) => {
   const displayMoreButton = () => {
     if (hasMore) {
       return (
-        <Card>
-          <CardActionArea style={{height: '100%'}} onClick={() => onMore(mlhEvents)}>
-            <CardContent>
-              <Link onClick={() => onMore(hasMore)}>
-                ...More
+        <Grid item>
+          <Card style={{ height: '100%' }}>
+            <CardActionArea style={{ height: '100%' }} onClick={() => onMore(mlhEvents)}>
+              <CardContent>
+                <Link onClick={() => onMore(hasMore)}>
+                  ...More
             </Link>
-            </CardContent>
-          </CardActionArea>
-        </Card>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Grid>
       );
     }
     return <span/>

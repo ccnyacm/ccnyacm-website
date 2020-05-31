@@ -2,8 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { AppRouter } from './routes/AppRouter';
+import './Font.css'
+
 
 const theme = createMuiTheme({
+    typography: {
+        fontFamily: "'Source Sans Pro', sans-serif",
+    },
     palette: {
         primary: {
             main: '#3B72AE',

@@ -9,9 +9,11 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontWeight: '700',
     paddingBottom: '4%',
+    paddingLeft: '1%',
   },
   container: {
     paddingTop: '4%',
+    paddingBottom: '5%'
   }
 }));
 

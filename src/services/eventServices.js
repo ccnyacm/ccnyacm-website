@@ -79,7 +79,7 @@ export async function getEventById(id: string) {
     if (doc.exists) {
       return doc.data();
     } else {
-      throw new Error(`Then document with id ${id} does not exist`);
+      throw new Error(`Then document with id '${id}' does not exist`);
     }
   } catch (error) {
     throw error;

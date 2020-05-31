@@ -4,8 +4,11 @@ import {
   Paper,
   Chip,
   Typography,
-  Button
+  Button,
+  CircularProgress,
+  Link as ExternalLink
 } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import { getEventsByDate } from '../../services/eventServices';
 import { getMLHEventsByDate } from '../../services/mlhEventRequest';
 import appContext from '../../context/appContext';
@@ -16,10 +19,12 @@ export const TodayEvents = () => {
   const timeFormat = { hour: 'numeric', minute: 'numeric', hour12: true }
   const [events, setEvents] = useState([]);
   const { setError, setHasError} = useContext(appContext);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getTodayEvents = async () => {
       try {
+        setLoading(true);
         const now = new Date();
         const data = await getEventsByDate(now);
         const hackathons = await getMLHEventsByDate(now);
@@ -27,16 +32,34 @@ export const TodayEvents = () => {
       } catch (err) {
         setError(err.message);
         setHasError(true);
+      } finally {
+        setLoading(false);
       }
     };
     getTodayEvents();
   }, [setError, setHasError]);
 
+  const getCorrectLink = (url) => {
+    if (url) {
+      return ExternalLink
+    } else {
+      return Link;
+    }
+  }
 
-  return (
+  return loading ? <CircularProgress /> : events.length === 0 ?
+  (
+    <Paper className={classes.altContainer}>
+      <Typography variant="h4" align="center" className={classes.altBanner} >
+        No Events Today!
+      </Typography>
+    </Paper>
+  )
+  :
+  (
     <Carousel animation="slide">
       {
-        events.map(({ imageUrl, title, startDate, endDate, url, description }) => (
+        events.map(({ id, imageUrl, title, startDate, endDate, url, description }) => (
           <Paper
             className={classes.container}
             key={title}
@@ -52,7 +75,13 @@ export const TodayEvents = () => {
             <Typography className={classes.text}>
               {description}
             </Typography>
-            <Button variant="contained" color="primary" onClick={() => window.location = url}>
+            <Button 
+              variant="contained"
+              color="primary"
+              component={getCorrectLink(url)}
+              to={`/${id}`} // if local link read this line
+              href={url} // if external link read this line
+            >
               Learn More
             </Button>
           </Paper>
