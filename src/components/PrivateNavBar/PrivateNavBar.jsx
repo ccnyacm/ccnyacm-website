@@ -1,19 +1,32 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import {
   AppBar, Toolbar, Button, Typography
 } from '@material-ui/core';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ElevationScroll } from '../ElevationScroll';
 import { signOut } from '../../services/authServices';
 import useStyles from './style';
+import appContext from '../../context/appContext';
 
 export const PrivateNavBar = () => {
   const classes = useStyles();
+  const [signedOut, setSignedOut] = useState(false);
+  const { setError, setHasError } = useContext(appContext);
 
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      setSignedOut(true)
+    } catch (error) {
+      setError(error.message);
+      setHasError(false);
+    }
+  }
 
   return (
     <div className={classes.root}>
+      { signedOut && <Redirect to="/signin" /> }
       <CssBaseline />
       <ElevationScroll>
         <AppBar position="fixed" className={classes.root}>
@@ -24,7 +37,7 @@ export const PrivateNavBar = () => {
               <Button
                 variant="contained"
                 className={classes.buttonRight}
-                onClick={signOut}
+                onClick={handleSignOut}
               >
                 <Typography className={classes.joinButton}>
                   Sign Out
