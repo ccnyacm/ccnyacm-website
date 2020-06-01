@@ -1,4 +1,11 @@
-import { IS_ERROR_CHANGE, ERROR_CHANGE, SELECTED_EVENT_CHANGE, SELECTED_MEMBER_CHANGE } from './types';
+import { 
+  IS_ERROR_CHANGE,
+  ERROR_CHANGE,
+  SELECTED_EVENT_CHANGE,
+  SELECTED_MEMBER_CHANGE,
+  ALL_EVENTS,
+  ALL_MEMBERS,
+} from './types';
 
 export default (state, action) => {
   switch(action.type) {
@@ -10,6 +17,10 @@ export default (state, action) => {
       return {...state, selectedEventId: action.payload};
     case SELECTED_MEMBER_CHANGE:
       return { ...state, selectedMemberId: action.payload };
+    case ALL_EVENTS:
+      return { ...state, events: action.payload };
+    case ALL_MEMBERS:
+      return { ...state, members: action.payload };
     default:
       return state;
   }
