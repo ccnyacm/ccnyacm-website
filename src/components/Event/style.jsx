@@ -1,32 +1,31 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles({
-  card: {
-    maxWidth: 290, /** SETTING A MAX WIDTH so that images size and everything wraps! */
-    justifyContent: 'center',
-    floatLeft: '10%'
+  gridListTile: {
+    margin: '1%',
+    minWidth: 300,
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
+  gridListTileBar: {
+    // background:
+    //   'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
   },
   title: {
+    fontSize: 18
+  },
+  subtitle: {
     fontSize: 14,
   },
-  pos: {
-    marginBottom: 12,
+  icon: {
+    color: '#55A5FA',
   },
-  media: {
-    //maxWidth: 275,
-    height: 0,
-    paddingTop: '56.25%', // 16:9
+  eventButton: {
+    padding: 0,
+    margin: 0,
+    width: '100%',
+    height: '100%',
   },
-  typography: {
-    textAlign: 'center'
-  },
-  cardActions: {
-    display: 'flex',
-    justifyContent: 'flex-end',
+  image: {
+    width: '100%',
+    height: '100%',
   }
 });
