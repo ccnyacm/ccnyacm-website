@@ -5,19 +5,14 @@
 
 import React, { useContext } from 'react';
 import {
-  Card,
-  CardContent,
-  Typography,
-  CardHeader,
-  CardMedia,
-  CardActionArea,
   Button,
-  CardActions,
   Link as ExternalLink,
+  GridListTile,
+  GridListTileBar,
 } from '@material-ui/core';
 import { Link } from 'react-router-dom'
 import appContext from '../../context/appContext';
-import { MoreHoriz as MoreHorizIcon } from '@material-ui/icons';
+import { AddCircleOutline as AddCircleOutlineIcon } from '@material-ui/icons';
 import { useStyles } from './style';
 
 /** NOTE, this page creates the Card, by calling Material UI, and passing props through parent Event */
@@ -49,45 +44,33 @@ export const Event = ({ event, className, mlh}) => {
 
   const dateConfigOptions = { year: 'numeric', month: 'short', day: 'numeric'};
   const dateRange = `${event.startDate.toLocaleString('en-US', dateConfigOptions)} - ${event.endDate.toLocaleString('en-US', dateConfigOptions)}`;
-  const timeConfigOptions = { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true};
-  const timeRange = `${event.startDate.toLocaleString('en-US', timeConfigOptions)} to ${event.endDate.toLocaleString('en-US', timeConfigOptions)}`;
   const component = mlh ? ExternalLink : Link;
   return(
-      <Card className={`${classes.card} ${className}`}>
-        <CardActionArea 
-          component={component} 
-          to={`/${event.id}`}
-          href={event.url }
-        > 
-          <CardHeader
-            title={event.title}
-            titleTypographyProps={{ color: 'primary' }}
-            subheader={event.host}
-          />
-          <CardMedia
-            className={classes.media}
-            image={event.imageUrl}
-            title="Bujar" /** The image should describe the event! */
-          />
-          <CardContent>
-            <Typography className={classes.typography}>
-              {dateRange}
-            </Typography>
-            {
-              // display only if the event is not from mlh
-              !mlh
-              && <Typography className={classes.typography}>
-                {timeRange}
-              </Typography>
-            }
-          </CardContent>
-        </CardActionArea>
-          <CardActions className={classes.cardActions}>
-        <Button color="primary" component={component} to={`/${event.id}`} href={event.url}>
-              <MoreHorizIcon color="secondary" />
-            </Button>
-          </CardActions>
-      </Card>
+    <GridListTile className={`${classes.gridListTile} ${className}`}>
+      <Button 
+        className={classes.eventButton}
+        component={component}
+        to={`/${event.id}`}
+        href={event.url}
+      >
+        <img src={event.imageUrl} className={classes.image} alt={event.title} />
+      </Button>
+      <GridListTileBar 
+        title={event.title}
+        titlePosition="top"
+        subtitle={dateRange}
+        classes={{
+          root: classes.gridListTileBar,
+          title: classes.title,
+          subtitle: classes.subtitle,
+        }}
+        actionIcon={
+          <Button color="primary" component={component} to={`/${event.id}`} href={event.url}>
+            <AddCircleOutlineIcon className={classes.icon}/>
+          </Button>
+        }
+      />
+    </GridListTile>
   );
 
 }

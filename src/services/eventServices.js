@@ -2,8 +2,24 @@ import { firestore } from '../config/firebaseConfig';
 
 const db = firestore;
 
+export async function getAllEvents() {
+  try {
+    const querySnapshot = await db.collection('events').get();
+    const events = []
+    querySnapshot.forEach((doc) => {
+      if (doc.exists) {
+        events.push(doc.data())
+      }
+    });
+    return events;
+  } catch (error) {
+    throw error;
+  }
+}
+
 /**
- * This function gets all the events in our collection
+ * @description This function gets all the events in our collection
+ * that will happen in the upcomming future
  */
 export async function getEvents() {
   try {
