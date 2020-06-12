@@ -12,16 +12,23 @@ import {
 } from '@material-ui/core';
 import { string, array, func} from 'prop-types';
 
+/**
+ * 
+ * @param title: title of Content Card
+ * @param buttonText: text that goes insided the action button
+ * @param buttonAction: This is the action executed by the action button
+ * @param contentData: an array of strings or objects containing the data
+ * @param formatData: a function to format data if contentData is an array of objects
+ * @description A component that is a card with data for the dashboard of CMS
+ */
 export const ContentCard = ({
   title, buttonText, buttonAction, contentData, formatData
 }) => {
   return (
     <Card>
-      <CardHeader>
-        <Typography>
-          {title}
-        </Typography>
-      </CardHeader>
+      <CardHeader
+        title={title}
+      />
       <CardContent>
         <List> 
           {
@@ -53,7 +60,7 @@ export const ContentCard = ({
 
 ContentCard.propTypes = {
   title: string.isRequired,
-  contentData: array.isRequired,
+  contentData: array,
   buttonText: string.isRequired,
   buttonAction: func,
   formatData: func,

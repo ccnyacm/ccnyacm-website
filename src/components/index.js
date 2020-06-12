@@ -14,3 +14,4 @@ export * from './Paragraph';
 export * from './ParagraphList';
 export * from './SignInForm';
 export * from './PrivateNavBar';
+export * from './DashBoard';

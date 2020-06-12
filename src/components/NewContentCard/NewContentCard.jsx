@@ -9,15 +9,20 @@ import {
 } from '@material-ui/core';
 import { string, func } from 'prop-types';
 
+/**
+ * 
+ * @param title: title of Content Card
+ * @param buttonText: text that goes insided the action button
+ * @param buttonAction: This is the action executed by the action button
+ * @param content: a string with additional information
+ */
 export const NewContentCard = ({
   title, content, buttonText, buttonAction
 }) => (
   <Card>
-    <CardHeader>
-      <Typography>
-        {title}
-      </Typography>
-    </CardHeader>
+      <CardHeader
+        title={title}
+      />
     <CardContent>
       <Typography>
         {content}

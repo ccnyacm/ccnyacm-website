@@ -47,6 +47,7 @@ export const AppState = ({ children }) => {
       setError(error.message);
       setHasError(true);
     }
+  }
   
   const getMembers = async () => {
     try {
