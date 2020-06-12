@@ -11,8 +11,11 @@ export const useStyles = makeStyles((theme) => ({
     backgrounSize: 'cover',
     backgroundPosition: 'center',
     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${process.env.PUBLIC_URL}/bg_img1.png)`,
+    [theme.breakpoints.down('lg')]: {
+      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${process.env.PUBLIC_URL}/bg_img2.png)`,
+    },
     padding: theme.spacing(2),
-    marginTop: '4%',
+    marginTop: '3%',
   },
   text: {
     color: '#fff',
